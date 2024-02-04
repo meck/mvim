@@ -1,0 +1,32 @@
+name: "Build"
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+env:
+  NIXPKGS_ALLOW_UNFREE: 1
+
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: "Install Nix ❄️"
+      uses: cachix/install-nix-action@v25
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: "Install Cachix ❄️"
+      uses: cachix/cachix-action@v13
+      with:
+        name: meck
+        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+
+    - name: build
+      run: nix build --impure
+
+    - name: check
+      run: nix flake check --impure
