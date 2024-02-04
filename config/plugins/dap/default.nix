@@ -158,5 +158,8 @@
       ln -s ${vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb \
         $out/bin/
     '';
-  in [vscode-cpptools vscode-codelldb lldb];
+  in
+    [lldb]
+    # Not working on Darwin
+    ++ lib.optionals stdenv.isLinux [vscode-cpptools vscode-codelldb];
 }
