@@ -7,23 +7,18 @@
     none-ls-nvim
   ];
 
-  extraPackages = with pkgs;
-    [
-      alejandra
-      black
-      hadolint
-      ruff
-      shellcheck
-      shfmt
-      statix
-      stylua
-      vim-vint
-    ]
-    ++ lib.optionals stdenv.isLinux
-    [
-      # Not working on Darwin
-      checkmake
-    ];
+  extraPackages = with pkgs; [
+    alejandra
+    black
+    checkmake
+    hadolint
+    ruff
+    shellcheck
+    shfmt
+    statix
+    stylua
+    vim-vint
+  ];
 
   imports = [./oelint-adv.nix];
 }

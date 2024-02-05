@@ -160,6 +160,6 @@
     '';
   in
     [lldb]
-    # Not working on Darwin
-    ++ lib.optionals stdenv.isLinux [vscode-cpptools vscode-codelldb];
+    # Only available/building on x86_64-linux
+    ++ lib.optionals (stdenv.isLinux && stdenv.isx86_64) [vscode-cpptools vscode-codelldb];
 }
