@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf (!config.mvim.small)
+{
   # Put the configurations in lua for now
   extraConfigLuaPost = builtins.readFile ./dap.lua;
 

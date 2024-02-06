@@ -1,4 +1,9 @@
-let
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (config.mvim) small;
   inlayHintsCfg = {
     highlight = "LspCodeLens";
     parameterHintsPrefix = "ᐊ ";
@@ -24,6 +29,7 @@ in {
         enable = true;
         # Enable inlay hints from clangd-extensions by default
         onAttach.function = "require('clangd_extensions.inlay_hints').set_inlay_hints()";
+        package = lib.mkIf small null;
       };
       rust-analyzer = {
         enable = true;
@@ -46,6 +52,7 @@ in {
         };
         # Install per project
         package = null;
+        rustcPackage = null;
         installCargo = false;
         installRustc = false;
       };
@@ -58,7 +65,8 @@ in {
       cmake.enable = true;
       pyright.enable = true;
       ruff-lsp.enable = true;
-      yamlls.enable = true;
+      # Large size
+      yamlls.enable = !small;
       taplo.enable = true;
       nil_ls.enable = true;
     };

@@ -22,8 +22,11 @@ jobs:
         name: meck
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
 
-    - name: build
-      run: nix build
+    - name: build full cfg
+      run: nix -L build .#
+
+    - name: build small cfg
+      run: nix -L build .#small
 
     - name: check
-      run: nix flake check
+      run: nix -L flake check

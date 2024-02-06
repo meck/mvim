@@ -1,5 +1,11 @@
-{pkgs, ...}:
-with pkgs.python3Packages; let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf (! config.mvim.small)
+(with pkgs.python3Packages; let
   oelint-parser = buildPythonPackage rec {
     pname = "oelint-parser";
     version = "3.0.1";
@@ -29,4 +35,4 @@ with pkgs.python3Packages; let
   };
 in {
   extraPackages = [oelint-adv];
-}
+})

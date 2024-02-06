@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf (!config.mvim.small)
+{
   # TODO: The convoluted language switching
   # doesen't work with nixvim
   extraPackages = with pkgs; [ltex-ls];
