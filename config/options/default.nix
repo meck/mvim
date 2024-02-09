@@ -98,7 +98,7 @@
       }
     ];
 
-    extraConfigLua =
+    extraConfigLuaPre =
       ''
         vim.opt.shortmess:append("c")
       ''
