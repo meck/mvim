@@ -9,10 +9,8 @@
 
   extraPackages = with pkgs; [
     alejandra
-    black
     checkmake
     hadolint
-    ruff
     shellcheck
     shfmt
     statix

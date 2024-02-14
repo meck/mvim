@@ -58,6 +58,7 @@ in {
       bashls.enable = true;
       cmake.enable = true;
       pyright.enable = true;
+      ruff-lsp.enable = true;
       yamlls.enable = true;
       taplo.enable = true;
       nil_ls.enable = true;
