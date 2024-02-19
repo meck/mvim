@@ -5,8 +5,7 @@ let
     otherHintsPrefix = "» ";
   };
 in {
-
-  imports = [ ./ltex.nix ];
+  imports = [./ltex.nix];
 
   plugins.clangd-extensions = {
     enable = true;
@@ -46,14 +45,14 @@ in {
           };
         };
         # Install per project
-        installLanguageServer = false;
+        package = null;
         installCargo = false;
         installRustc = false;
       };
       hls = {
         enable = true;
         # Install per project
-        installLanguageServer = false;
+        package = null;
       };
       bashls.enable = true;
       cmake.enable = true;
@@ -180,8 +179,5 @@ in {
 
   plugins.fidget.enable = true;
 
-  plugins.nvim-lightbulb = {
-    enable = true;
-    autocmd.enabled = true;
-  };
+  plugins.nvim-lightbulb.enable = true;
 }
