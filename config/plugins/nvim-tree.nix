@@ -2,6 +2,7 @@
   plugins.nvim-tree = {
     enable = true;
     diagnostics.enable = true;
+    syncRootWithCwd = true;
   };
 
   plugins.lualine.extensions = ["nvim-tree"];

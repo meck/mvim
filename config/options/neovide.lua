@@ -1,23 +1,16 @@
 if vim.g.neovide then
+    local g = vim.g
     local o = vim.opt
-    local font_size = 10.5
-    local step = 0.3
-    local font = "Iosevka Term ExtraLight"
-    o.guifont = font .. ":h" .. font_size
-    local getfontsize = function()
-        return tonumber(string.match(o.guifont:get()[1], ":h(.*)"))
-    end
+    local scale_step = 1 + 0.10
+    g.neovide_padding_top = 10
+    g.neovide_padding_bottom = 10
+    g.neovide_padding_right = 10
+    g.neovide_padding_left = 10
+    g.neovide_scale_factor = 1.0
+    g.neovide_fullscreen = false
 
-    function _G.neovide_inc_font()
-        o.guifont = font .. ":h" .. (getfontsize() + step)
-    end
-
-    function _G.neovide_dec_font()
-        o.guifont = font .. ":h" .. (getfontsize() - step)
-    end
-
-    function _G.neovide_res_font()
-        o.guifont = font .. ":h" .. font_size
+    local change_scale_factor = function(delta)
+        g.neovide_scale_factor = g.neovide_scale_factor * delta
     end
 
     local function map(mode, l, r, desc)
@@ -26,7 +19,13 @@ if vim.g.neovide then
         vim.keymap.set(mode, l, r, op)
     end
 
-    map("n", "<C-=>", _G.neovide_inc_font, "Neovide: increse fontsize")
-    map("n", "<C-->", _G.neovide_dec_font, "Neovide: decrease fontsize")
-    map("n", "<C-0>", _G.neovide_res_font, "Neovide: reset fontsize")
+    map("n", "<C-=>", function()
+        change_scale_factor(scale_step)
+    end, "Neovide: increase scale")
+    map("n", "<C-->", function()
+        change_scale_factor(1 / scale_step)
+    end, "Neovide: decrease scale")
+    map("n", "<C-0>", function()
+        g.neovide_scale_factor = 1.0
+    end, "Neovide: reset scale")
 end
