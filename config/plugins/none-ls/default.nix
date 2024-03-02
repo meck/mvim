@@ -11,7 +11,6 @@
     alejandra
     checkmake
     hadolint
-    shellcheck
     shfmt
     statix
     stylua

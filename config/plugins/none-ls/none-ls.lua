@@ -3,11 +3,9 @@ local helpers = require("null-ls.helpers")
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.code_actions.shellcheck,
         null_ls.builtins.code_actions.statix,
         null_ls.builtins.diagnostics.checkmake,
         null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.statix,
         null_ls.builtins.diagnostics.vint,
         null_ls.builtins.formatting.alejandra,
