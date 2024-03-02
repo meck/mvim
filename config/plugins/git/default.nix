@@ -6,10 +6,13 @@
   plugins = {
     neogit = {
       enable = true;
-      # disableBuiltinNotifications = true;
-      autoRefresh = true;
-      integrations.diffview = true;
+      settings = {
+        auto_refresh = true;
+        integrations.diffview = true;
+      };
     };
+
+    diffview.enable = true;
 
     gitsigns = {
       enable = true;
