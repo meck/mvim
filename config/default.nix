@@ -13,10 +13,4 @@
       description = "Build a smaller version not bundling large LSP servers";
     };
   };
-
-  config = {
-    extraFiles = {
-      "keymap/swe-us_utf-8.vim" = builtins.readFile ./keymap/swe-us_utf-8.vim;
-    };
-  };
 }
