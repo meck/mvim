@@ -12,60 +12,58 @@ _: {
 
     friendly-snippets.enable = true;
 
-    nvim-cmp = {
+    cmp = {
       enable = true;
+      settings = {
+        snippet.expand = "luasnip";
+        sources = [
+          {name = "nvim_lsp";}
+          {name = "nvim_lua";}
+          {name = "luasnip";}
+          {name = "treesitter";}
+          {name = "buffer";}
+          {
+            name = "path";
+            groupIndex = 1;
+          }
+          {
+            name = "spell";
+            groupIndex = 1;
+          }
+        ];
 
-      snippet.expand = "luasnip";
-
-      sources = [
-        {name = "nvim_lsp";}
-        {name = "nvim_lua";}
-        {name = "luasnip";}
-        {name = "treesitter";}
-        {name = "buffer";}
-        {
-          name = "path";
-          groupIndex = 1;
-        }
-        {
-          name = "spell";
-          groupIndex = 1;
-        }
-      ];
-
-      mapping = {
-        "<CR>" =
-          /*
-          lua
-          */
-          ''cmp.mapping.confirm({ select = true })'';
-        "<C-d>" =
-          /*
-          lua
-          */
-          ''cmp.mapping.scroll_docs(-4)'';
-        "<C-f>" =
-          /*
-          lua
-          */
-          ''cmp.mapping.scroll_docs(4)'';
-        "<C-Space>" =
-          /*
-          lua
-          */
-          ''cmp.mapping.complete()'';
-        "<C-e>" =
-          /*
-          lua
-          */
-          ''cmp.mapping.abort()'';
-        "<Tab>" = {
-          action =
+        mapping = {
+          "<CR>" =
+            /*
+            lua
+            */
+            ''cmp.mapping.confirm({ select = true })'';
+          "<C-d>" =
+            /*
+            lua
+            */
+            ''cmp.mapping.scroll_docs(-4)'';
+          "<C-f>" =
+            /*
+            lua
+            */
+            ''cmp.mapping.scroll_docs(4)'';
+          "<C-Space>" =
+            /*
+            lua
+            */
+            ''cmp.mapping.complete()'';
+          "<C-e>" =
+            /*
+            lua
+            */
+            ''cmp.mapping.abort()'';
+          "<Tab>" =
             /*
             lua
             */
             ''
-              function(fallback)
+              cmp.mapping(function(fallback)
                 local has_words_before = function()
                   unpack = unpack or table.unpack
                   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -81,20 +79,14 @@ _: {
                 else
                   fallback()
                 end
-              end
+              end, { "i", "s" })
             '';
-          modes = [
-            "i"
-            "s"
-          ];
-        };
-        "<S-Tab>" = {
-          action =
+          "<S-Tab>" =
             /*
             lua
             */
             ''
-              function(fallback)
+              cmp.mapping(function(fallback)
                 if cmp.visible() then
                   cmp.select_prev_item()
                 elseif luasnip.jumpable(-1) then
@@ -102,9 +94,8 @@ _: {
                 else
                   fallback()
                 end
-              end
+              end, { "i", "s"})
             '';
-          modes = ["i" "s"];
         };
       };
     };
