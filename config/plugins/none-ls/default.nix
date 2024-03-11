@@ -1,21 +1,48 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkMerge [
+  {
+    plugins.none-ls = {
+      enable = true;
+      sources = {
+        code_actions.statix.enable = true;
+        diagnostics = {
+          checkmake.enable = true;
+          hadolint.enable = true;
+          statix.enable = true;
+          vint.enable = true;
+        };
+        formatting = {
+          alejandra.enable = true;
+          shfmt = {
+            enable = true;
+            withArgs =
+              /*
+              lua
+              */
+              ''{ extra_args = { "-i", "4", "-ci", "-bn", "-sr"  } }'';
+          };
+
+          stylua = {
+            enable = true;
+            withArgs =
+              /*
+              lua
+              */
+              ''{ extra_args = { "--indent-type", "Spaces", "--indent-width", "4" } }'';
+          };
+        };
+      };
+    };
+  }
+
   # NOTE: custom servers does is not configurable thru nixvim atm
-  # https://github.com/nix-community/nixvim/issues/768
-  extraConfigLuaPost = builtins.readFile ./none-ls.lua;
-
-  extraPlugins = with pkgs.vimPlugins; [
-    none-ls-nvim
-  ];
-
-  extraPackages = with pkgs; [
-    alejandra
-    checkmake
-    hadolint
-    shfmt
-    statix
-    stylua
-    vim-vint
-  ];
-
-  imports = [./oelint-adv.nix];
-}
+  (lib.mkIf (! config.mvim.small) {
+    extraConfigLuaPost = builtins.readFile ./oelint-adv.lua;
+    extraPackages = [pkgs.oelint-adv];
+  })
+]
