@@ -254,7 +254,7 @@ _: {
     }
 
     {
-      mode = ["n" "x"];
+      mode = ["o" "x"];
       key = "ih";
       action = ":<C-U>Gitsigns select_hunk<CR>";
       options = {
