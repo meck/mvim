@@ -2,6 +2,7 @@
   imports = [
     ./comment-nvim.nix
     ./completion
+    ./copilot.nix
     ./dap
     ./git
     ./indent-blankline.nix
