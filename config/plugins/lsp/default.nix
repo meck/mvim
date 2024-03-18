@@ -24,6 +24,8 @@ in {
 
   plugins.lsp = {
     enable = true;
+    # https://github.com/neovim/nvim-lspconfig/issues/2184
+    capabilities = "capabilities.offsetEncoding = 'utf-16'";
     servers = {
       clangd = {
         enable = true;
