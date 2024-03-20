@@ -110,11 +110,11 @@ in {
     keymaps = {
       silent = true;
       diagnostic = {
-        "[s" = {
+        "]s" = {
           action = "goto_next";
           desc = "Diagnstics: next";
         };
-        "]s" = {
+        "[s" = {
           action = "goto_prev";
           desc = "Diagnostic: prev";
         };
