@@ -7,8 +7,8 @@ local api = vim.api
 vim.cmd([[ command! Bonly silent! execute "%bd|e#|bd#" ]])
 
 local function change_ltex_lang(new_lang)
-    if api.nvim_buf_get_commands(0, {}).LTexSwitchLang then
-        vim.cmd.LTexSwitchLang(new_lang)
+    if vim.fn.exists(":LTeXSwitchLang") > 0 then
+        vim.cmd.LTeXSwitchLang(new_lang)
     end
 end
 

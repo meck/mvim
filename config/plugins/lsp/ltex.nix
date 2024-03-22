@@ -1,14 +1,30 @@
 {
-  pkgs,
   lib,
   config,
   ...
 }:
 lib.mkIf (!config.mvim.small)
 {
-  # TODO: The convoluted language switching
-  # doesen't work with nixvim
-  extraPackages = with pkgs; [ltex-ls];
-  extraPlugins = with pkgs.vimPlugins; [ltex_extra-nvim];
-  extraConfigLua = builtins.readFile ./ltex.lua;
+  plugins = {
+    lsp.servers.ltex = {
+      enable = true;
+      settings = {
+        enabled = ["markdown" "tex" "mail" "gitcommit"];
+        language = "en-US";
+      };
+      onAttach.function = builtins.readFile ./ltex_attach.lua;
+    };
+
+    ltex-extra = {
+      enable = true;
+      settings = {
+        load_langs = ["en-US" "sv"];
+        path.__raw =
+          /*
+          lua
+          */
+          ''vim.fn.expand("~") .. "/.local/share/ltex"'';
+      };
+    };
+  };
 }
