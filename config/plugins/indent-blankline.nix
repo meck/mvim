@@ -1,7 +1,7 @@
 {
   plugins.indent-blankline = {
     enable = true;
-    extraOptions.enabled = false;
+    settings.enabled = false;
   };
 
   autoCmd = [

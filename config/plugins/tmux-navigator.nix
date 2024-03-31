@@ -1,14 +1,8 @@
 {
-  globals = {
-    tmux_navigator_no_mappings = 1;
-  };
-
   plugins = {
     tmux-navigator = {
       enable = true;
-
-      tmuxNavigatorNoWrap = 1;
-      tmuxNavigatorDisableWhenZoomed = 1;
+      settings.no_mappings = true;
     };
   };
 

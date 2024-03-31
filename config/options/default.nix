@@ -1,6 +1,6 @@
 {
   config = {
-    options = {
+    opts = {
       # Misc
       timeoutlen = 500;
       ttimeoutlen = 50;

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./comment-nvim.nix
+    ./comment.nix
     ./completion
     ./copilot.nix
     ./dap
