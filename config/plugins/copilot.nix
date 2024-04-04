@@ -1,11 +1,14 @@
 _: {
-  plugins.copilot-vim.enable = true;
-
-  extraConfigLua = ''
-    vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
-      expr = true,
-      replace_keycodes = false
-    })
-    vim.g.copilot_no_tab_map = true
-  '';
+  plugins.copilot-lua = {
+    enable = true;
+    suggestion = {
+      autoTrigger = true;
+      keymap = {
+        accept = "<M-l>";
+        prev = "<M-[>";
+        next = "<M-]>";
+        dismiss = "<C-]>";
+      };
+    };
+  };
 }
