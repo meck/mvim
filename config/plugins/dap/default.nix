@@ -153,20 +153,6 @@ lib.mkIf (!config.mvim.small)
     }
   ];
 
-  # TODO: Dependency of dap-ui
-  # from nixpkgs dosen't seem to be working
-  extraPlugins = [
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "nvim-nio";
-      src = pkgs.fetchFromGitHub {
-        owner = "nvim-neotest";
-        repo = "nvim-nio";
-        rev = "173f285eebb410199273fa178aa517fd2d7edd80";
-        hash = "sha256-bjYtZygrL05qB2dM7Q8lJor81VYO+u8/JWQqfZ19Wzk=";
-      };
-    })
-  ];
-
   extraPackages = with pkgs; let
     vscode-cpptools = runCommand "vscode-cpptools" {} ''
       mkdir -p $out/bin
