@@ -5,15 +5,20 @@
     nixpkgs.follows = "nixvim/nixpkgs";
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
+    nix-appimage = {
+      url = "github:ralismark/nix-appimage";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {
-    self,
     nixpkgs,
     nixvim,
     flake-utils,
+    nix-appimage,
     ...
-  } @ inputs:
+  }:
     {
       # Add `inputs.mvim.homeManagerModules.default` to imports
       # set `programs.nixvim.mvim.small = true;` to use small version
@@ -35,6 +40,14 @@
 
       nvim-small = nvim.nixvimExtend {mvim.small = true;};
 
+      # Bundle all inputs into an AppImage
+      mkAppImage = p:
+        nix-appimage.mkappimage.${system} {
+          drv = p;
+          entrypoint = pkgs.lib.getExe p;
+          inherit (p) name;
+        };
+
       mkNvimCheck = nvimPkg:
         nixvimLib.check.mkTestDerivationFromNvim {
           nvim = nvimPkg;
@@ -45,6 +58,7 @@
       packages = {
         default = nvim;
         small = nvim-small;
+        appimage = mkAppImage nvim-small;
       };
 
       # `nix flake check .`
