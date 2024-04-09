@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   plugins.telescope = {
     enable = true;
-    extraOptions = {
+    settings = {
       defaults = {
         prompt_prefix = " ";
         selection_caret = " ";
@@ -27,58 +27,58 @@
       };
       undo = {
         enable = true;
-        useDelta = true;
+        settings.useDelta = true;
       };
     };
 
     keymaps = {
       "<leader>/" = {
-        desc = "Telescope: grep";
+        options.desc = "Telescope: grep";
         action = "live_grep";
       };
 
       "<leader>f" = {
-        desc = "Telescope: files";
+        options.desc = "Telescope: files";
         action = "find_files";
       };
 
       "<leader>F" = {
-        desc = "Telescope: git files";
+        options.desc = "Telescope: git files";
         action = "git_files";
       };
 
       "<leader>b" = {
-        desc = "Telescope: buffers";
+        options.desc = "Telescope: buffers";
         action = "buffers";
       };
 
       "<leader>g" = {
-        desc = "Telescope: git status";
+        options.desc = "Telescope: git status";
         action = "git_status";
       };
 
       "<leader>gd" = {
-        desc = "LSP: definitions";
+        options.desc = "LSP: definitions";
         action = "lsp_definitions";
       };
 
       "<leader>gi" = {
-        desc = "LSP: implementations";
+        options.desc = "LSP: implementations";
         action = "lsp_implementations";
       };
 
       "<leader>ls" = {
-        desc = "LSP: symbols";
+        options.desc = "LSP: symbols";
         action = "lsp_document_symbols";
       };
 
       "<leader>lS" = {
-        desc = "LSP: workspace symbols";
+        options.desc = "LSP: workspace symbols";
         action = "lsp_workspace_symbols";
       };
 
       "<leader>ld" = {
-        desc = "Telescope: diagnostics";
+        options.desc = "Telescope: diagnostics";
         action = "diagnostics";
       };
     };
