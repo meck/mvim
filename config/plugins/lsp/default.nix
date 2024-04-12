@@ -63,6 +63,10 @@ in {
         # Install per project
         package = null;
       };
+      typst-lsp = {
+        enable = true;
+        extraOptions.settings.exportPdf = "never";
+      };
       bashls.enable = true;
       cmake.enable = true;
       pyright.enable = true;
