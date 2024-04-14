@@ -18,6 +18,7 @@ lib.mkMerge [
         };
         formatting = {
           alejandra.enable = true;
+          typstfmt.enable = true;
           shfmt = {
             enable = true;
             withArgs =
