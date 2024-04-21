@@ -70,7 +70,7 @@ in {
       bashls.enable = true;
       cmake.enable = true;
       pyright.enable = true;
-      ruff-lsp.enable = true;
+      ruff.enable = true;
       # Large size
       yamlls.enable = !small;
       taplo.enable = true;
