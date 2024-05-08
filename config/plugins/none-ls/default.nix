@@ -17,7 +17,10 @@ lib.mkMerge [
           vint.enable = true;
         };
         formatting = {
-          alejandra.enable = true;
+          nixfmt = {
+            enable = true;
+            package = pkgs.nixfmt-rfc-style;
+          };
           typstfmt.enable = true;
           shfmt = {
             enable = true;
