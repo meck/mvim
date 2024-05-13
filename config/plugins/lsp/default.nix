@@ -1,25 +1,33 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   inherit (config.mvim) small;
   inlayHintsCfg = {
     highlight = "LspCodeLens";
     parameterHintsPrefix = "ᐊ ";
     otherHintsPrefix = "» ";
   };
-in {
-  imports = [./ltex.nix];
+in
+{
+  imports = [ ./ltex.nix ];
 
   plugins.clangd-extensions = {
     enable = true;
     inlayHints = inlayHintsCfg;
   };
 
-  plugins.rust-tools = {
+  plugins.rustaceanvim = {
+    # TODO: Add inlay hints in vim 0.10
     enable = true;
-    inlayHints = {auto = true;} // inlayHintsCfg;
+    # Install rust-analyzer per project
+    rustAnalyzerPackage = null;
+
+    # NOTE: 'server.settings' dosent work...
+    # https://github.com/nix-community/nixvim/issues/1258 
+    extraOptions.server.default_settings = {
+      checkOnSave = true;
+      cargo.features = "all";
+      check.command = "clippy";
+    };
   };
 
   plugins.lsp = {
@@ -32,31 +40,6 @@ in {
         # Enable inlay hints from clangd-extensions by default
         onAttach.function = "require('clangd_extensions.inlay_hints').set_inlay_hints()";
         package = lib.mkIf small null;
-      };
-      rust-analyzer = {
-        enable = true;
-        settings = {
-          checkOnSave = true;
-          check = {
-            command = "clippy";
-            features = "all";
-            extraArgs = [
-              "-W"
-              "clippy::unwrap_used"
-              "-W"
-              "clippy::pedantic"
-              "-A"
-              "clippy::missing-errors-doc"
-              "-A"
-              "clippy::too_many_lines"
-            ];
-          };
-        };
-        # Install per project
-        package = null;
-        rustcPackage = null;
-        installCargo = false;
-        installRustc = false;
       };
       hls = {
         enable = true;
@@ -78,9 +61,7 @@ in {
     };
 
     onAttach =
-      /*
-      lua
-      */
+      # lua
       ''
         -- Turn on signcolumn for the current window
         vim.wo.signcolumn = "yes"
