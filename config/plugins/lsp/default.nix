@@ -28,6 +28,10 @@ in
       cargo.features = "all";
       check.command = "clippy";
     };
+    tools = {
+      crateTestExecutor = "toggleterm";
+      executor = "toggleterm";
+    };
   };
 
   plugins.lsp = {
