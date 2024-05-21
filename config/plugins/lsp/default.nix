@@ -131,6 +131,30 @@ in
   keymaps = [
     {
       mode = "n";
+      key = "]d";
+      action = # lua
+        "function() vim.diagnostic.goto_next({float = true}) end";
+      lua = true;
+      options = {
+        silent = true;
+        desc = "Diagnostic: next";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "[d";
+      action = # lua
+        "function() vim.diagnostic.goto_prev({float = true}) end";
+      lua = true;
+      options = {
+        silent = true;
+        desc = "Diagnostic: prev";
+      };
+    }
+
+    {
+      mode = "n";
       key = "<leader>gq";
       action = "vim.lsp.buf.format";
       lua = true;
