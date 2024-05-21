@@ -1,15 +1,15 @@
-{
-  lib,
-  config,
-  ...
-}:
-lib.mkIf (!config.mvim.small)
-{
+{ lib, config, ... }:
+lib.mkIf (!config.mvim.small) {
   plugins = {
     lsp.servers.ltex = {
       enable = true;
       settings = {
-        enabled = ["markdown" "tex" "mail" "gitcommit"];
+        enabled = [
+          "markdown"
+          "tex"
+          "mail"
+          "gitcommit"
+        ];
         language = "en-US";
       };
       onAttach.function = builtins.readFile ./ltex_attach.lua;
@@ -18,11 +18,12 @@ lib.mkIf (!config.mvim.small)
     ltex-extra = {
       enable = true;
       settings = {
-        load_langs = ["en-US" "sv"];
+        load_langs = [
+          "en-US"
+          "sv"
+        ];
         path.__raw =
-          /*
-          lua
-          */
+          # lua
           ''vim.fn.expand("~") .. "/.local/share/ltex"'';
       };
     };

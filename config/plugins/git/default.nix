@@ -27,9 +27,7 @@ _: {
       mode = "n";
       key = "]c";
       action =
-        /*
-        lua
-        */
+        # lua
         ''
           function()
               if vim.wo.diff then
@@ -52,9 +50,7 @@ _: {
       mode = "n";
       key = "[c";
       action =
-        /*
-        lua
-        */
+        # lua
         ''
           function()
               if vim.wo.diff then
@@ -74,12 +70,13 @@ _: {
     }
 
     {
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<leader>hs";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.stage_hunk";
       lua = true;
       options = {
@@ -89,12 +86,13 @@ _: {
     }
 
     {
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<leader>hr";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.reset_hunk";
       lua = true;
       options = {
@@ -107,9 +105,7 @@ _: {
       mode = "n";
       key = "<leader>hu";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.undo_stage_hunk";
       lua = true;
       options = {
@@ -122,9 +118,7 @@ _: {
       mode = "n";
       key = "<leader>hS";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.stage_buffer";
       lua = true;
       options = {
@@ -137,9 +131,7 @@ _: {
       mode = "n";
       key = "<leader>hR";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.reset_buffer";
       lua = true;
       options = {
@@ -152,9 +144,7 @@ _: {
       mode = "n";
       key = "<leader>hp";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.preview_hunk";
       lua = true;
       options = {
@@ -167,9 +157,7 @@ _: {
       mode = "n";
       key = "<leader>hp";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.preview_hunk";
       lua = true;
       options = {
@@ -182,9 +170,7 @@ _: {
       mode = "n";
       key = "<leader>hb";
       action =
-        /*
-        lua
-        */
+        # lua
         ''function() package.loaded.gitsigns.blame_line({ full = true }) end'';
       lua = true;
       options = {
@@ -197,9 +183,7 @@ _: {
       mode = "n";
       key = "<leader>tb";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.toggle_current_line_blame";
       lua = true;
       options = {
@@ -212,9 +196,7 @@ _: {
       mode = "n";
       key = "<leader>hd";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.diffthis";
       lua = true;
       options = {
@@ -227,9 +209,7 @@ _: {
       mode = "n";
       key = "<leader>hD";
       action =
-        /*
-        lua
-        */
+        # lua
         ''function() package.loaded.gitsigns.diffthis("~") end'';
       lua = true;
       options = {
@@ -242,9 +222,7 @@ _: {
       mode = "n";
       key = "<leader>td";
       action =
-        /*
-        lua
-        */
+        # lua
         "package.loaded.gitsigns.toggle_deleted";
       lua = true;
       options = {
@@ -254,7 +232,10 @@ _: {
     }
 
     {
-      mode = ["o" "x"];
+      mode = [
+        "o"
+        "x"
+      ];
       key = "ih";
       action = ":<C-U>Gitsigns select_hunk<CR>";
       options = {

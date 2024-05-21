@@ -5,7 +5,7 @@
     syncRootWithCwd = true;
   };
 
-  plugins.lualine.extensions = ["nvim-tree"];
+  plugins.lualine.extensions = [ "nvim-tree" ];
 
   keymaps = [
     {

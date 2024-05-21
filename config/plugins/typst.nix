@@ -1,3 +1,1 @@
-{
-  plugins.typst-vim.enable = true;
-}
+{ plugins.typst-vim.enable = true; }

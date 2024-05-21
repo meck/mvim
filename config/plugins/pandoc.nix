@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   extraPlugins = with pkgs.vimPlugins; [
     vimtex
     vim-pandoc
@@ -11,12 +12,19 @@
     "pandoc#formatting#mode" = "hA";
     "pandoc#keyboard#sections#header_style" = "s";
     "pandoc#spell#enabled" = false;
-    "pandoc#spell#default_langs" = ["en" "sv"];
+    "pandoc#spell#default_langs" = [
+      "en"
+      "sv"
+    ];
     "pandoc#hypertext#create_if_no_alternates_exists" = true;
     "pandoc#hypertext#autosave_on_edit_open_link" = true;
-    "pandoc#after#modules#enabled" = ["tablemode"];
+    "pandoc#after#modules#enabled" = [ "tablemode" ];
     # NOTE: https://github.com/vim-pandoc/vim-pandoc-syntax/issues/344#issuecomment-761563470
-    "pandoc#syntax#codeblocks#embeds#langs" = ["bash=sh" "vhdl" "python"];
+    "pandoc#syntax#codeblocks#embeds#langs" = [
+      "bash=sh"
+      "vhdl"
+      "python"
+    ];
   };
 
   extraConfigLua = ''

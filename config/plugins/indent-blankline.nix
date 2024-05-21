@@ -8,13 +8,11 @@
     {
       # For following vim-unimpaired list toggle `yol`
       desc = "Automatically toggle indent-blankline";
-      event = ["OptionSet"];
+      event = [ "OptionSet" ];
       pattern = "list";
       callback = {
         __raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
                 if vim.v.option_type == "local" then

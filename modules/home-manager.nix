@@ -1,12 +1,10 @@
-{nixvim, ...}: {
-  imports = [nixvim.homeManagerModules.nixvim];
+{ nixvim, ... }:
+{
+  imports = [ nixvim.homeManagerModules.nixvim ];
   config = {
-    programs.nixvim = {
-      pkgs,
-      lib,
-      ...
-    }:
-      (import ../config {inherit pkgs lib;})
+    programs.nixvim =
+      { pkgs, lib, ... }:
+      (import ../config { inherit pkgs lib; })
       // {
         config = {
           enable = true;

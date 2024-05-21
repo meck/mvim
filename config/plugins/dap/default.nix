@@ -4,8 +4,7 @@
   config,
   ...
 }:
-lib.mkIf (!config.mvim.small)
-{
+lib.mkIf (!config.mvim.small) {
   # Put the configurations in lua for now
   extraConfigLuaPost = builtins.readFile ./dap.lua;
 
@@ -31,7 +30,10 @@ lib.mkIf (!config.mvim.small)
           port = ''''${port}'';
           executable = {
             command = "codelldb";
-            args = ["--port" ''''${port}''];
+            args = [
+              "--port"
+              ''''${port}''
+            ];
           };
         };
       };
@@ -153,20 +155,25 @@ lib.mkIf (!config.mvim.small)
     }
   ];
 
-  extraPackages = with pkgs; let
-    vscode-cpptools = runCommand "vscode-cpptools" {} ''
-      mkdir -p $out/bin
-      ln -s ${vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7 \
-        $out/bin/
-    '';
+  extraPackages =
+    with pkgs;
+    let
+      vscode-cpptools = runCommand "vscode-cpptools" { } ''
+        mkdir -p $out/bin
+        ln -s ${vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7 \
+          $out/bin/
+      '';
 
-    vscode-codelldb = runCommand "codelldb" {} ''
-      mkdir -p $out/bin
-      ln -s ${vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb \
-        $out/bin/
-    '';
-  in
-    [lldb]
+      vscode-codelldb = runCommand "codelldb" { } ''
+        mkdir -p $out/bin
+        ln -s ${vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb \
+          $out/bin/
+      '';
+    in
+    [ lldb ]
     # Only available/building on x86_64-linux
-    ++ lib.optionals (stdenv.isLinux && stdenv.isx86_64) [vscode-cpptools vscode-codelldb];
+    ++ lib.optionals (stdenv.isLinux && stdenv.isx86_64) [
+      vscode-cpptools
+      vscode-codelldb
+    ];
 }

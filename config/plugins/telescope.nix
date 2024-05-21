@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   plugins.telescope = {
     enable = true;
     settings = {
@@ -89,9 +90,7 @@
       key = "<leader><leader>";
       lua = true;
       action =
-        /*
-        lua
-        */
+        # lua
         ''
           function()
               local theme = require("telescope.themes").get_dropdown({ previewer = false })
@@ -117,5 +116,5 @@
   ];
 
   # For undo extension
-  extraPackages = with pkgs; [delta];
+  extraPackages = with pkgs; [ delta ];
 }

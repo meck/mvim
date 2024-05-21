@@ -7,7 +7,7 @@ _: {
 
     luasnip = {
       enable = true;
-      fromLua = [{paths = ./snippets;}];
+      fromLua = [ { paths = ./snippets; } ];
     };
 
     friendly-snippets.enable = true;
@@ -17,11 +17,11 @@ _: {
       settings = {
         snippet.expand = "luasnip";
         sources = [
-          {name = "nvim_lsp";}
-          {name = "nvim_lua";}
-          {name = "luasnip";}
-          {name = "treesitter";}
-          {name = "buffer";}
+          { name = "nvim_lsp"; }
+          { name = "nvim_lua"; }
+          { name = "luasnip"; }
+          { name = "treesitter"; }
+          { name = "buffer"; }
           {
             name = "path";
             groupIndex = 1;
@@ -34,34 +34,22 @@ _: {
 
         mapping = {
           "<CR>" =
-            /*
-            lua
-            */
+            # lua
             ''cmp.mapping.confirm({ select = true })'';
           "<C-d>" =
-            /*
-            lua
-            */
+            # lua
             ''cmp.mapping.scroll_docs(-4)'';
           "<C-f>" =
-            /*
-            lua
-            */
+            # lua
             ''cmp.mapping.scroll_docs(4)'';
           "<C-Space>" =
-            /*
-            lua
-            */
+            # lua
             ''cmp.mapping.complete()'';
           "<C-e>" =
-            /*
-            lua
-            */
+            # lua
             ''cmp.mapping.abort()'';
           "<Tab>" =
-            /*
-            lua
-            */
+            # lua
             ''
               cmp.mapping(function(fallback)
                 local has_words_before = function()
@@ -82,9 +70,7 @@ _: {
               end, { "i", "s" })
             '';
           "<S-Tab>" =
-            /*
-            lua
-            */
+            # lua
             ''
               cmp.mapping(function(fallback)
                 if cmp.visible() then

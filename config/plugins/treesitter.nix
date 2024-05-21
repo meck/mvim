@@ -7,6 +7,9 @@
     nixGrammars = true;
     ensureInstalled = "all";
     nixvimInjections = true;
-    disabledLanguages = ["markdown" "markdown-inline"];
+    disabledLanguages = [
+      "markdown"
+      "markdown-inline"
+    ];
   };
 }

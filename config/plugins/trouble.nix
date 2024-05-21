@@ -49,5 +49,5 @@
     }
   ];
 
-  plugins.lualine.extensions = ["trouble"];
+  plugins.lualine.extensions = [ "trouble" ];
 }

@@ -42,7 +42,7 @@
       wildmode = "longest:list,full";
       completeopt = "menu,menuone,noselect";
 
-      clipboard = ["unnamedplus"];
+      clipboard = [ "unnamedplus" ];
     };
 
     globals = {
@@ -54,7 +54,12 @@
     autoCmd = [
       {
         desc = "Enable relative line numbers in normal mode";
-        event = ["BufEnter" "FocusGained" "InsertLeave" "WinEnter"];
+        event = [
+          "BufEnter"
+          "FocusGained"
+          "InsertLeave"
+          "WinEnter"
+        ];
         callback = {
           __raw = ''
             function()
@@ -68,7 +73,12 @@
 
       {
         desc = "Disable relative line numbers in insert mode";
-        event = ["BufLeave" "FocusLost" "InsertEnter" "WinLeave"];
+        event = [
+          "BufLeave"
+          "FocusLost"
+          "InsertEnter"
+          "WinLeave"
+        ];
         callback = {
           __raw = ''
             function()
@@ -82,7 +92,7 @@
 
       {
         desc = "Highlight on yank";
-        event = ["TextYankPost"];
+        event = [ "TextYankPost" ];
         callback = {
           __raw = ''
             function()

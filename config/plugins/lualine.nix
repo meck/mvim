@@ -3,7 +3,10 @@
     enable = true;
     globalstatus = true;
     alwaysDivideMiddle = true;
-    extensions = ["quickfix" "nvim-dap-ui"];
+    extensions = [
+      "quickfix"
+      "nvim-dap-ui"
+    ];
     sectionSeparators = {
       left = "";
       right = "";
@@ -17,9 +20,7 @@
         "mode"
         {
           name.__raw =
-            /*
-            lua
-            */
+            # lua
             ''
               function()
                 local km = vim.bo.keymap
@@ -33,9 +34,7 @@
 
         {
           name.__raw =
-            /*
-            lua
-            */
+            # lua
             ''
               function()
                   if vim.fn["g:tablemode#IsActive"]() == 1 then
@@ -46,15 +45,31 @@
             '';
         }
       ];
-      lualine_b = ["branch" "diff"];
-      lualine_c = ["filename" "navic"];
-      lualine_x = ["spaces" "encoding" "filetype"];
-      lualine_y = ["diagnostics"];
-      lualine_z = ["progress" "location"];
+      lualine_b = [
+        "branch"
+        "diff"
+      ];
+      lualine_c = [
+        "filename"
+        "navic"
+      ];
+      lualine_x = [
+        "spaces"
+        "encoding"
+        "filetype"
+      ];
+      lualine_y = [ "diagnostics" ];
+      lualine_z = [
+        "progress"
+        "location"
+      ];
     };
     inactiveSections = {
-      lualine_b = ["branch" "diff"];
-      lualine_c = ["filename"];
+      lualine_b = [
+        "branch"
+        "diff"
+      ];
+      lualine_c = [ "filename" ];
     };
   };
 

@@ -25,18 +25,14 @@ lib.mkMerge [
           shfmt = {
             enable = true;
             withArgs =
-              /*
-              lua
-              */
+              # lua
               ''{ extra_args = { "-i", "4", "-ci", "-bn", "-sr"  } }'';
           };
 
           stylua = {
             enable = true;
             withArgs =
-              /*
-              lua
-              */
+              # lua
               ''{ extra_args = { "--indent-type", "Spaces", "--indent-width", "4" } }'';
           };
         };
@@ -45,8 +41,8 @@ lib.mkMerge [
   }
 
   # NOTE: custom servers does is not configurable thru nixvim atm
-  (lib.mkIf (! config.mvim.small) {
+  (lib.mkIf (!config.mvim.small) {
     extraConfigLuaPost = builtins.readFile ./oelint-adv.lua;
-    extraPackages = [pkgs.oelint-adv];
+    extraPackages = [ pkgs.oelint-adv ];
   })
 ]
