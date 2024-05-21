@@ -42,10 +42,8 @@
       wildmode = "longest:list,full";
       completeopt = "menu,menuone,noselect";
 
-      clipboard = ["unnamed" "unnamedplus"];
+      clipboard = ["unnamedplus"];
     };
-
-    # clipboard.register = ["unnamed" "unnamedplus"];
 
     globals = {
       # Leader keys <space> and \

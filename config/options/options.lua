@@ -47,3 +47,17 @@ fn.sign_define("DiagnosticSignHint", {
     text = "",
     texthl = "DiagnosticHint",
 })
+
+if vim.env.SSH_TTY and (not vim.env.TMUX) then
+  g.clipboard = {
+    name = "native OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end

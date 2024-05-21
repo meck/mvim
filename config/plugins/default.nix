@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./comment.nix
     ./completion
     ./copilot.nix
     ./dap
@@ -12,7 +11,6 @@
     ./none-ls
     ./notify.nix
     ./nvim-autopairs.nix
-    ./nvim-osc52.nix
     ./nvim-tree.nix
     ./pandoc.nix
     ./surround.nix

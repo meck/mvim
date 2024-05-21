@@ -1,36 +1,35 @@
 { config, lib, ... }:
 let
   inherit (config.mvim) small;
-  inlayHintsCfg = {
-    highlight = "LspCodeLens";
-    parameterHintsPrefix = "ᐊ ";
-    otherHintsPrefix = "» ";
-  };
 in
 {
   imports = [ ./ltex.nix ];
 
   plugins.clangd-extensions = {
     enable = true;
-    inlayHints = inlayHintsCfg;
+    inlayHints = {
+      parameterHintsPrefix = "ᐊ ";
+      otherHintsPrefix = "» ";
+    };
   };
 
   plugins.rustaceanvim = {
-    # TODO: Add inlay hints in vim 0.10
     enable = true;
     # Install rust-analyzer per project
     rustAnalyzerPackage = null;
 
     # NOTE: 'server.settings' dosent work...
     # https://github.com/nix-community/nixvim/issues/1258 
-    extraOptions.server.default_settings = {
-      checkOnSave = true;
-      cargo.features = "all";
-      check.command = "clippy";
-    };
-    tools = {
-      crateTestExecutor = "toggleterm";
-      executor = "toggleterm";
+    settings = {
+      server.default_settings = {
+        checkOnSave = true;
+        cargo.features = "all";
+        check.command = "clippy";
+      };
+      tools = {
+        crate_test_executor = "toggleterm";
+        executor = "toggleterm";
+      };
     };
   };
 
@@ -41,8 +40,6 @@ in
     servers = {
       clangd = {
         enable = true;
-        # Enable inlay hints from clangd-extensions by default
-        onAttach.function = "require('clangd_extensions.inlay_hints').set_inlay_hints()";
         package = lib.mkIf small null;
       };
       hls = {
@@ -94,20 +91,14 @@ in
                 group = group_id,
             })
         end
+
+        if client.server_capabilities.inlayHintProvider then
+              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
       '';
 
     keymaps = {
       silent = true;
-      diagnostic = {
-        "]s" = {
-          action = "goto_next";
-          desc = "Diagnstics: next";
-        };
-        "[s" = {
-          action = "goto_prev";
-          desc = "Diagnostic: prev";
-        };
-      };
       lspBuf = {
         "gD" = {
           action = "declaration";
@@ -122,11 +113,6 @@ in
         "gs" = {
           action = "signature_help";
           desc = "LSP: signature help";
-        };
-
-        "K" = {
-          action = "hover";
-          desc = "LSP: hover";
         };
 
         "<leader>a" = {
@@ -151,6 +137,23 @@ in
       options = {
         silent = true;
         desc = "LSP: format buffer";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>i";
+      action =
+        # lua
+        ''
+          function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+          end
+        '';
+      lua = true;
+      options = {
+        # silent = true;
+        desc = "LSP: toggle inlay hints";
       };
     }
 
