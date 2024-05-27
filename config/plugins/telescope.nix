@@ -88,8 +88,7 @@
     {
       mode = "n";
       key = "<leader><leader>";
-      lua = true;
-      action =
+      action.__raw =
         # lua
         ''
           function()
@@ -106,8 +105,7 @@
     {
       mode = "n";
       key = "<leader>u";
-      lua = true;
-      action = "require('telescope').extensions.undo.undo";
+      action.__raw = "require('telescope').extensions.undo.undo";
       options = {
         silent = true;
         desc = "Telescope: undo history";

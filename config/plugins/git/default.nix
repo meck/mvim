@@ -15,8 +15,8 @@ _: {
     {
       mode = "n";
       key = "gk";
-      action = "require('neogit').open";
-      lua = true;
+      action.__raw = # lua
+        "require('neogit').open";
       options = {
         silent = true;
         desc = "neogit: open";
@@ -26,7 +26,7 @@ _: {
     {
       mode = "n";
       key = "]c";
-      action =
+      action.__raw =
         # lua
         ''
           function()
@@ -39,7 +39,6 @@ _: {
               return "<Ignore>"
           end
         '';
-      lua = true;
       options = {
         silent = true;
         desc = "Git: next git hunk";
@@ -49,7 +48,7 @@ _: {
     {
       mode = "n";
       key = "[c";
-      action =
+      action.__raw =
         # lua
         ''
           function()
@@ -62,7 +61,6 @@ _: {
               return "<Ignore>"
           end
         '';
-      lua = true;
       options = {
         silent = true;
         desc = "Git: prev git hunk";
@@ -75,10 +73,9 @@ _: {
         "v"
       ];
       key = "<leader>hs";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.stage_hunk";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: stage hunk";
@@ -91,10 +88,9 @@ _: {
         "v"
       ];
       key = "<leader>hr";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.reset_hunk";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: reset hunk";
@@ -104,10 +100,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hu";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.undo_stage_hunk";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: undo stage hunk";
@@ -117,10 +112,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hS";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.stage_buffer";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: stage buffer";
@@ -130,10 +124,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hR";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.reset_buffer";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: reset buffer";
@@ -143,10 +136,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hp";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.preview_hunk";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: preview hunk";
@@ -156,10 +148,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hp";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.preview_hunk";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: preview hunk";
@@ -169,10 +160,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hb";
-      action =
+      action.__raw =
         # lua
         ''function() package.loaded.gitsigns.blame_line({ full = true }) end'';
-      lua = true;
       options = {
         silent = true;
         desc = "Git: blame line";
@@ -182,10 +172,9 @@ _: {
     {
       mode = "n";
       key = "<leader>tb";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.toggle_current_line_blame";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: toggle blame line";
@@ -195,10 +184,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hd";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.diffthis";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: diffthis";
@@ -208,10 +196,9 @@ _: {
     {
       mode = "n";
       key = "<leader>hD";
-      action =
+      action.__raw =
         # lua
         ''function() package.loaded.gitsigns.diffthis("~") end'';
-      lua = true;
       options = {
         silent = true;
         desc = "Git: diffthis ~";
@@ -221,10 +208,9 @@ _: {
     {
       mode = "n";
       key = "<leader>td";
-      action =
+      action.__raw =
         # lua
         "package.loaded.gitsigns.toggle_deleted";
-      lua = true;
       options = {
         silent = true;
         desc = "Git: toggle deleted";

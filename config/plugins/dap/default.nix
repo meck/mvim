@@ -8,6 +8,8 @@ lib.mkIf (!config.mvim.small) {
   # Put the configurations in lua for now
   extraConfigLuaPost = builtins.readFile ./dap.lua;
 
+  plugins.lualine.extensions = [ "nvim-dap-ui" ];
+
   plugins.dap = {
     enable = true;
 
@@ -69,8 +71,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>db";
-      action = "require('dap').toggle_breakpoint";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').toggle_breakpoint";
       options = {
         silent = true;
         desc = "Dap: toggle breakpoint";
@@ -80,8 +82,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dc";
-      action = "require('dap').continue";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').continue";
       options = {
         silent = true;
         desc = "Dap: continue";
@@ -91,8 +93,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dn";
-      action = "require('dap').step_over";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').step_over";
       options = {
         silent = true;
         desc = "Dap: step over";
@@ -102,8 +104,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dj";
-      action = "require('dap').step_into";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').step_into";
       options = {
         silent = true;
         desc = "Dap: step into";
@@ -113,8 +115,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dk";
-      action = "require('dap').step_out";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').step_out";
       options = {
         silent = true;
         desc = "Dap: step out";
@@ -124,8 +126,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dr";
-      action = "require('dap').run_to_cursor";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').run_to_cursor";
       options = {
         silent = true;
         desc = "Dap: run to cursor";
@@ -135,8 +137,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dx";
-      action = "require('dap').terminate";
-      lua = true;
+      action.__raw = # lua
+        "require('dap').terminate";
       options = {
         silent = true;
         desc = "Dap: terminate";
@@ -146,8 +148,8 @@ lib.mkIf (!config.mvim.small) {
     {
       mode = "n";
       key = "<leader>dd";
-      action = "require('dapui').toggle";
-      lua = true;
+      action.__raw = # lua
+        "require('dapui').toggle";
       options = {
         silent = true;
         desc = "Dap: toggle ui";

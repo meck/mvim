@@ -135,8 +135,7 @@
     {
       mode = "n";
       key = "<leader>s";
-      action = "_G.swe_mode_toggle";
-      lua = true;
+      action.__raw = "_G.swe_mode_toggle";
       options = {
         silent = false;
         desc = "Toggle swedish keymap";

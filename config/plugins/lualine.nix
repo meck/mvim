@@ -3,10 +3,7 @@
     enable = true;
     globalstatus = true;
     alwaysDivideMiddle = true;
-    extensions = [
-      "quickfix"
-      "nvim-dap-ui"
-    ];
+    extensions = [ "quickfix" ];
     sectionSeparators = {
       left = "";
       right = "";

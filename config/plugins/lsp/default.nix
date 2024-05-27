@@ -36,7 +36,7 @@ in
   plugins.lsp = {
     enable = true;
     # https://github.com/neovim/nvim-lspconfig/issues/2184
-    capabilities = "capabilities.offsetEncoding = 'utf-16'";
+    # capabilities = "capabilities.offsetEncoding = 'utf-16'";
     servers = {
       clangd = {
         enable = true;
@@ -132,9 +132,8 @@ in
     {
       mode = "n";
       key = "]d";
-      action = # lua
+      action.__raw = # lua
         "function() vim.diagnostic.goto_next({float = true}) end";
-      lua = true;
       options = {
         silent = true;
         desc = "Diagnostic: next";
@@ -144,9 +143,8 @@ in
     {
       mode = "n";
       key = "[d";
-      action = # lua
+      action.__raw = # lua
         "function() vim.diagnostic.goto_prev({float = true}) end";
-      lua = true;
       options = {
         silent = true;
         desc = "Diagnostic: prev";
@@ -156,8 +154,7 @@ in
     {
       mode = "n";
       key = "<leader>gq";
-      action = "vim.lsp.buf.format";
-      lua = true;
+      action.__raw = "vim.lsp.buf.format";
       options = {
         silent = true;
         desc = "LSP: format buffer";
@@ -167,14 +164,13 @@ in
     {
       mode = "n";
       key = "<leader>i";
-      action =
+      action.__raw =
         # lua
         ''
           function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
           end
         '';
-      lua = true;
       options = {
         # silent = true;
         desc = "LSP: toggle inlay hints";
@@ -184,8 +180,7 @@ in
     {
       mode = "n";
       key = "<leader>c";
-      action = "vim.lsp.codelens.run";
-      lua = true;
+      action.__raw = "vim.lsp.codelens.run";
       options = {
         silent = true;
         desc = "LSP: run codelens";
