@@ -1,30 +1,29 @@
-{ pkgs, lib, ... }:
-{
-  colorscheme = lib.mkForce "nordfox";
+_: {
+  colorscheme = "nordfox";
   colorschemes = {
     melange.enable = true;
-  };
-  extraPlugins = with pkgs.vimPlugins; [ nightfox-nvim ];
-
-  extraConfigLuaPre = ''
-    require("nightfox").setup({
-        options = {
-            dim_inactive = false,
-            styles = {
-                comments = "italic",
-                keywords = "bold",
-                types = "bold",
-            },
-        },
+    nightfox = {
+      enable = true;
+      flavor = "nordfox";
+      settings = {
         groups = {
           all = {
-            LspInlayHint = { 
-              fg = "palette.fg3",
-              bg = "palette.bg1",
-              style = "bold",
-              },
-          },
-        },
-    })
-  '';
+            LspInlayHint = {
+              fg = "palette.fg3";
+              bg = "palette.bg1";
+              style = "bold";
+            };
+          };
+        };
+        options = {
+          dim_inactive = false;
+          styles = {
+            comments = "italic";
+            keywords = "bold";
+            types = "bold";
+          };
+        };
+      };
+    };
+  };
 }
