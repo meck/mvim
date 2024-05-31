@@ -179,7 +179,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>c";
+      key = "<leader>lc";
       action.__raw = "vim.lsp.codelens.run";
       options = {
         silent = true;
