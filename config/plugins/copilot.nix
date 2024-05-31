@@ -19,6 +19,7 @@
   extraConfigLua = # lua
     ''
       -- NOTE: Cmp integrations not yet in nixpkgs
+      -- see docs for mappings when activating
       -- require("CopilotChat.integrations.cmp").setup()
       require('CopilotChat').setup({
         window = {
@@ -28,14 +29,6 @@
           height = 0.4,
           row = 1
         },
-        -- mappings = {
-        --  complete = { insert = ''',
-        --  },
-        -- },
-        selection = function(source)
-          local select = require("CopilotChat.select")
-          return select.visual(source) or select.buffer(source)
-        end,
       })
 
     '';
@@ -54,7 +47,7 @@
       action.__raw = # lua
         ''
           function()
-            local input = vim.fn.input("Quick Chat: ")
+            local input = vim.fn.input("Quick Chat (Buffer): ")
             if input ~= "" then
               require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
             end
