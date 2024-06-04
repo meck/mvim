@@ -1,37 +1,37 @@
-{ pkgs, ... }:
-{
-  plugins.copilot-lua = {
-    enable = true;
-    suggestion = {
-      autoTrigger = true;
-      keymap = {
-        accept = "<M-l>";
-        prev = "<M-[>";
-        next = "<M-]>";
-        dismiss = "<C-]>";
+_: {
+  plugins = {
+    copilot-lua = {
+      enable = true;
+      suggestion = {
+        autoTrigger = true;
+        keymap = {
+          accept = "<M-l>";
+          prev = "<M-[>";
+          next = "<M-]>";
+          dismiss = "<C-]>";
+        };
+      };
+    };
+    copilot-chat = {
+      enable = true;
+      settings = {
+        window = {
+          layout = "float";
+          relative = "cursor";
+          width = 1;
+          height = 0.4;
+          row = 1;
+        };
       };
     };
   };
 
-  # NOTE: https://github.com/nix-community/nixvim/issues/1425
-  extraPlugins = [ pkgs.vimPlugins.CopilotChat-nvim ];
-
-  extraConfigLua = # lua
-    ''
-      -- NOTE: Cmp integrations not yet in nixpkgs
-      -- see docs for mappings when activating
-      -- require("CopilotChat.integrations.cmp").setup()
-      require('CopilotChat').setup({
-        window = {
-          layout = 'float',
-          relative = 'cursor',
-          width = 1,
-          height = 0.4,
-          row = 1
-        },
-      })
-
-    '';
+  # extraConfigLua = # lua
+  #   ''
+  #     -- NOTE: Cmp integrations not yet in nixpkgs
+  #     -- see docs for mappings when activating
+  #     require("CopilotChat.integrations.cmp").setup()
+  #   '';
 
   keymaps = [
     {
