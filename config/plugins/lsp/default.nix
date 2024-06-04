@@ -58,7 +58,7 @@ in
       # Large size
       yamlls.enable = !small;
       taplo.enable = true;
-      nil_ls.enable = true;
+      nil-ls.enable = true;
     };
 
     onAttach =
