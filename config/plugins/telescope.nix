@@ -53,32 +53,32 @@
         action = "buffers";
       };
 
-      "<leader>g" = {
+      "<leader>gg" = {
         options.desc = "Telescope: git status";
         action = "git_status";
       };
 
-      "<leader>gd" = {
+      "<leader>cf" = {
         options.desc = "LSP: definitions";
         action = "lsp_definitions";
       };
 
-      "<leader>gi" = {
+      "<leader>ci" = {
         options.desc = "LSP: implementations";
         action = "lsp_implementations";
       };
 
-      "<leader>ls" = {
+      "<leader>cs" = {
         options.desc = "LSP: symbols";
         action = "lsp_document_symbols";
       };
 
-      "<leader>lS" = {
+      "<leader>cS" = {
         options.desc = "LSP: workspace symbols";
         action = "lsp_workspace_symbols";
       };
 
-      "<leader>ld" = {
+      "<leader>cd" = {
         options.desc = "Telescope: diagnostics";
         action = "diagnostics";
       };

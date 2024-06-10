@@ -1,5 +1,9 @@
 {
-  plugins.trouble.enable = true;
+  plugins = {
+    trouble.enable = true;
+    which-key.registrations."<leader>"."x".name = "  Trouble";
+    lualine.extensions = [ "trouble" ];
+  };
 
   keymaps = [
     {
@@ -48,6 +52,4 @@
       };
     }
   ];
-
-  plugins.lualine.extensions = [ "trouble" ];
 }

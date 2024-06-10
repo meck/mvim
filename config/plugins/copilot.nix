@@ -24,6 +24,7 @@ _: {
         };
       };
     };
+    which-key.registrations."<leader>"."a".name = "  Copilot";
   };
 
   # extraConfigLua = # lua
@@ -36,14 +37,14 @@ _: {
   keymaps = [
     {
       mode = "n";
-      key = "<leader>cc";
+      key = "<leader>aa";
       action = "<CMD>CopilotChatToggle<CR>";
       options.desc = "CopilotChat: Toggle";
     }
 
     {
       mode = "n";
-      key = "<leader>cq";
+      key = "<leader>aq";
       action.__raw = # lua
         ''
           function()
@@ -60,7 +61,7 @@ _: {
         "v"
         "n"
       ];
-      key = "<leader>ch";
+      key = "<leader>ah";
       action.__raw = # lua
         ''
           function()
@@ -74,7 +75,7 @@ _: {
         "v"
         "n"
       ];
-      key = "<leader>cp";
+      key = "<leader>ap";
       action.__raw = # lua
         ''
           function()

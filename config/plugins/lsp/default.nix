@@ -115,12 +115,12 @@ in
           desc = "LSP: signature help";
         };
 
-        "<leader>a" = {
+        "<leader>ca" = {
           action = "code_action";
           desc = "LSP: code action";
         };
 
-        "<leader>r" = {
+        "<leader>cr" = {
           action = "rename";
           desc = "LSP: rename";
         };
@@ -153,7 +153,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>gq";
+      key = "<leader>cf";
       action.__raw = "vim.lsp.buf.format";
       options = {
         silent = true;
@@ -163,7 +163,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>i";
+      key = "<leader>ci";
       action.__raw =
         # lua
         ''
@@ -179,7 +179,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>lc";
+      key = "<leader>cc";
       action.__raw = "vim.lsp.codelens.run";
       options = {
         silent = true;
@@ -189,7 +189,7 @@ in
 
     {
       mode = "n";
-      key = "ga";
+      key = "<leader>cs";
       action = "<cmd>ClangdSwitchSourceHeader<cr>";
       options = {
         silent = true;
@@ -197,6 +197,8 @@ in
       };
     }
   ];
+
+  plugins.which-key.registrations."<leader>"."c".name = "  LSP";
 
   plugins.fidget.enable = true;
 

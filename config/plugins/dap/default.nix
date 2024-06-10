@@ -67,6 +67,8 @@ lib.mkIf (!config.mvim.small) {
     };
   };
 
+  plugins.which-key.registrations."<leader>"."d".name = "  Debug";
+
   keymaps = [
     {
       mode = "n";

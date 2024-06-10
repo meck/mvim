@@ -8,6 +8,8 @@
     vim-table-mode
   ];
 
+  plugins.which-key.registrations."<leader>"."t".name = "  Table Mode";
+
   globals = {
     "pandoc#formatting#mode" = "hA";
     "pandoc#keyboard#sections#header_style" = "s";

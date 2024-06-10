@@ -9,6 +9,7 @@ _: {
     };
     diffview.enable = true;
     gitsigns.enable = true;
+    which-key.registrations."<leader>"."g".name = "󰊢  Git";
   };
 
   keymaps = [
@@ -72,7 +73,7 @@ _: {
         "n"
         "v"
       ];
-      key = "<leader>hs";
+      key = "<leader>gs";
       action.__raw =
         # lua
         "package.loaded.gitsigns.stage_hunk";
@@ -87,7 +88,7 @@ _: {
         "n"
         "v"
       ];
-      key = "<leader>hr";
+      key = "<leader>gr";
       action.__raw =
         # lua
         "package.loaded.gitsigns.reset_hunk";
@@ -99,7 +100,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hu";
+      key = "<leader>gu";
       action.__raw =
         # lua
         "package.loaded.gitsigns.undo_stage_hunk";
@@ -111,7 +112,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hS";
+      key = "<leader>gS";
       action.__raw =
         # lua
         "package.loaded.gitsigns.stage_buffer";
@@ -123,7 +124,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hR";
+      key = "<leader>gR";
       action.__raw =
         # lua
         "package.loaded.gitsigns.reset_buffer";
@@ -135,7 +136,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hp";
+      key = "<leader>gp";
       action.__raw =
         # lua
         "package.loaded.gitsigns.preview_hunk";
@@ -147,19 +148,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hp";
-      action.__raw =
-        # lua
-        "package.loaded.gitsigns.preview_hunk";
-      options = {
-        silent = true;
-        desc = "Git: preview hunk";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>hb";
+      key = "<leader>gb";
       action.__raw =
         # lua
         ''function() package.loaded.gitsigns.blame_line({ full = true }) end'';
@@ -171,7 +160,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>tb";
+      key = "<leader>gB";
       action.__raw =
         # lua
         "package.loaded.gitsigns.toggle_current_line_blame";
@@ -183,7 +172,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hd";
+      key = "<leader>gd";
       action.__raw =
         # lua
         "package.loaded.gitsigns.diffthis";
@@ -195,7 +184,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>hD";
+      key = "<leader>gD";
       action.__raw =
         # lua
         ''function() package.loaded.gitsigns.diffthis("~") end'';
@@ -207,7 +196,7 @@ _: {
 
     {
       mode = "n";
-      key = "<leader>td";
+      key = "<leader>gx";
       action.__raw =
         # lua
         "package.loaded.gitsigns.toggle_deleted";
