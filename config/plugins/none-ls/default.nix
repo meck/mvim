@@ -9,7 +9,6 @@ lib.mkMerge [
     plugins.none-ls = {
       enable = true;
       sources = {
-        code_actions.statix.enable = true;
         diagnostics = {
           checkmake.enable = true;
           hadolint.enable = true;
@@ -17,10 +16,6 @@ lib.mkMerge [
           vint.enable = !config.mvim.small;
         };
         formatting = {
-          nixfmt = {
-            enable = true;
-            package = pkgs.nixfmt-rfc-style;
-          };
           typstfmt.enable = true;
           shfmt = {
             enable = true;

@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config.mvim) small;
 in
@@ -58,7 +63,13 @@ in
       # Large size
       yamlls.enable = !small;
       taplo.enable = true;
-      nil-ls.enable = true;
+      nixd = {
+        enable = true;
+        settings = {
+          diagnostic.suppress = [ "sema-escaping-with" ];
+          formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+        };
+      };
     };
 
     onAttach =
