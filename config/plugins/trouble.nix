@@ -9,46 +9,37 @@
     {
       mode = "n";
       key = "<leader>xx";
-      action = "<cmd>TroubleToggle<cr>";
+      action = "<cmd>Trouble diagnostics toggle<cr>";
       options = {
         silent = true;
-        desc = "Trouble: toggle";
+        desc = "Diagnostics (Trouble)";
       };
     }
     {
       mode = "n";
-      key = "<leader>xw";
-      action = "<cmd>TroubleToggle workspace_diagnostics<cr>";
+      key = "<leader>xX";
+      action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
       options = {
         silent = true;
-        desc = "Trouble: workspace toggle";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>xd";
-      action = "<cmd>TroubleToggle document_diagnostics<cr>";
-      options = {
-        silent = true;
-        desc = "Trouble: document toggle";
+        desc = "Buffer Diagnostics (Trouble)";
       };
     }
     {
       mode = "n";
       key = "<leader>xl";
-      action = "<cmd>TroubleToggle loclist<cr>";
+      action = "<cmd>Trouble loclist toggle<cr>";
       options = {
         silent = true;
-        desc = "Trouble: loclist";
+        desc = "Location List (Trouble)";
       };
     }
     {
       mode = "n";
       key = "<leader>xq";
-      action = "<cmd>TroubleToggle quickfix<cr>";
+      action = "<cmd>Trouble qflist toggle<cr>";
       options = {
         silent = true;
-        desc = "Trouble: quickfix";
+        desc = "Quickfix List (Trouble)";
       };
     }
   ];
