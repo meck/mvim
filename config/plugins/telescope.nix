@@ -58,27 +58,27 @@
         action = "git_status";
       };
 
-      "<leader>cf" = {
+      "<leader>lf" = {
         options.desc = "LSP: definitions";
         action = "lsp_definitions";
       };
 
-      "<leader>ci" = {
+      "<leader>li" = {
         options.desc = "LSP: implementations";
         action = "lsp_implementations";
       };
 
-      "<leader>cs" = {
+      "<leader>ls" = {
         options.desc = "LSP: symbols";
         action = "lsp_document_symbols";
       };
 
-      "<leader>cS" = {
+      "<leader>lS" = {
         options.desc = "LSP: workspace symbols";
         action = "lsp_workspace_symbols";
       };
 
-      "<leader>cd" = {
+      "<leader>ld" = {
         options.desc = "Telescope: diagnostics";
         action = "diagnostics";
       };

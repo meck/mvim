@@ -97,35 +97,42 @@ in
         end
       '';
 
-    keymaps = {
-      silent = true;
-      lspBuf = {
-        "gD" = {
-          action = "declaration";
-          desc = "LSP: declaration";
-        };
-
-        "gy" = {
-          action = "type_definition";
-          desc = "LSP: type definition";
-        };
-
-        "gs" = {
-          action = "signature_help";
-          desc = "LSP: signature help";
-        };
-
-        "<leader>ca" = {
+    keymaps =
+      let
+        action = {
           action = "code_action";
           desc = "LSP: code action";
         };
-
-        "<leader>cr" = {
+        rename = {
           action = "rename";
           desc = "LSP: rename";
         };
+      in
+      {
+        silent = true;
+        lspBuf = {
+          "gD" = {
+            action = "declaration";
+            desc = "LSP: declaration";
+          };
+
+          "gy" = {
+            action = "type_definition";
+            desc = "LSP: type definition";
+          };
+
+          "gs" = {
+            action = "signature_help";
+            desc = "LSP: signature help";
+          };
+
+          # Dual mapping to for old habits
+          "<leader>la" = action;
+          "<leader>a" = action;
+          "<leader>lr" = rename;
+          "<leader>r" = rename;
+        };
       };
-    };
   };
 
   keymaps = [
@@ -153,7 +160,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>cf";
+      key = "<leader>lf";
       action.__raw = "vim.lsp.buf.format";
       options = {
         silent = true;
@@ -163,7 +170,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>ci";
+      key = "<leader>li";
       action.__raw =
         # lua
         ''
@@ -179,7 +186,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>cc";
+      key = "<leader>lc";
       action.__raw = "vim.lsp.codelens.run";
       options = {
         silent = true;
@@ -189,7 +196,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>cs";
+      key = "<leader>ls";
       action = "<cmd>ClangdSwitchSourceHeader<cr>";
       options = {
         silent = true;
@@ -198,7 +205,7 @@ in
     }
   ];
 
-  plugins.which-key.registrations."<leader>"."c".name = "  LSP";
+  plugins.which-key.registrations."<leader>"."l".name = "  LSP";
 
   plugins.fidget.enable = true;
 
