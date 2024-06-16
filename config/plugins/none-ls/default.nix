@@ -12,7 +12,6 @@ lib.mkMerge [
         diagnostics = {
           checkmake.enable = true;
           hadolint.enable = true;
-          statix.enable = true;
           vint.enable = !config.mvim.small;
         };
         formatting = {

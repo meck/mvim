@@ -40,6 +40,7 @@ in
 
   plugins.lsp = {
     enable = true;
+    inlayHints = true;
     # https://github.com/neovim/nvim-lspconfig/issues/2184
     # capabilities = "capabilities.offsetEncoding = 'utf-16'";
     servers = {
@@ -69,6 +70,10 @@ in
           diagnostic.suppress = [ "sema-escaping-with" ];
           formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
+        onAttach.function = # lua
+          ''
+            client.server_capabilities.semanticTokensProvider = nil
+          '';
       };
     };
 
@@ -98,13 +103,9 @@ in
             local group_id = vim.api.nvim_create_augroup(("_lsp_codelens_%d"):format(bufnr), { clear = true })
             vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "InsertLeave" }, {
                 buffer = bufnr,
-                callback = vim.lsp.codelens.refresh,
+                callback = function() vim.lsp.codelens.refresh({ bufnr = bufnr }) end,
                 group = group_id,
             })
-        end
-
-        if client.server_capabilities.inlayHintProvider then
-              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
       '';
 
@@ -122,6 +123,16 @@ in
       {
         silent = true;
         lspBuf = {
+          "gd" = {
+            action = "definition";
+            desc = "LSP: definition";
+          };
+
+          "gi" = {
+            action = "implementation";
+            desc = "LSP: implementation";
+          };
+
           "gD" = {
             action = "declaration";
             desc = "LSP: declaration";
@@ -197,7 +208,7 @@ in
 
     {
       mode = "n";
-      key = "<leader>lc";
+      key = "<leader>ll";
       action.__raw = "vim.lsp.codelens.run";
       options = {
         silent = true;
