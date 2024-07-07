@@ -36,7 +36,7 @@
           extraSpecialArgs = { };
         };
 
-        nvim-small = nvim.nixvimExtend { mvim.small = true; };
+        nvim-small = nvim.extend { mvim.small = true; };
 
         mkNvimCheck =
           nvimPkg:
