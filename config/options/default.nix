@@ -114,7 +114,7 @@
       + (builtins.readFile ./neovide.lua);
 
     extraFiles = {
-      "keymap/swe-us_utf-8.vim" = builtins.readFile ../keymap/swe-us_utf-8.vim;
+      "keymap/swe-us_utf-8.vim".source = ../keymap/swe-us_utf-8.vim;
     };
   };
 }

@@ -1,15 +1,13 @@
 {
   plugins.treesitter = {
     enable = true;
-    indent = true;
-    folding = true;
-    incrementalSelection.enable = false;
-    nixGrammars = true;
-    ensureInstalled = "all";
-    nixvimInjections = true;
-    disabledLanguages = [
-      "markdown"
-      "markdown-inline"
-    ];
+    settings = {
+      indent.enable = true;
+      incrementalSelection.enable = false;
+      highlight.disable = [
+        "markdown"
+        "markdown-inline"
+      ];
+    };
   };
 }
