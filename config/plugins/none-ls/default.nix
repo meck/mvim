@@ -18,14 +18,14 @@ lib.mkMerge [
           typstfmt.enable = true;
           shfmt = {
             enable = true;
-            withArgs =
+            settings =
               # lua
               ''{ extra_args = { "-i", "4", "-ci", "-bn", "-sr"  } }'';
           };
 
           stylua = {
             enable = true;
-            withArgs =
+            settings =
               # lua
               ''{ extra_args = { "--indent-type", "Spaces", "--indent-width", "4" } }'';
           };
