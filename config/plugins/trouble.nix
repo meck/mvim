@@ -1,7 +1,13 @@
 {
   plugins = {
     trouble.enable = true;
-    which-key.registrations."<leader>"."x".name = "  Trouble";
+    which-key.settings.spec = [
+      {
+        __unkeyed-1 = "<leader>x";
+        icon = " ";
+        group = "Trouble";
+      }
+    ];
     lualine.extensions = [ "trouble" ];
   };
 

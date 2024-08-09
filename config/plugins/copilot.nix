@@ -24,7 +24,13 @@ _: {
         };
       };
     };
-    which-key.registrations."<leader>"."c".name = "  Copilot";
+    which-key.settings.spec = [
+      {
+        __unkeyed-1 = "<leader>c";
+        icon = " ";
+        group = "Copilot";
+      }
+    ];
   };
 
   # extraConfigLua = # lua

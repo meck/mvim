@@ -67,7 +67,12 @@ lib.mkIf (!config.mvim.small) {
     };
   };
 
-  plugins.which-key.registrations."<leader>"."d".name = "  Debug";
+  plugins.which-key.settings.spec = [
+    {
+      __unkeyed-1 = "<leader>d";
+      group = "Debug";
+    }
+  ];
 
   keymaps = [
     {

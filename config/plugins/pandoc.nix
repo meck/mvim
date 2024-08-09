@@ -8,7 +8,12 @@
     vim-table-mode
   ];
 
-  plugins.which-key.registrations."<leader>"."t".name = "  Table Mode";
+  plugins.which-key.settings.spec = [
+    {
+      __unkeyed-1 = "<leader>t";
+      group = "Table Mode";
+    }
+  ];
 
   globals = {
     "pandoc#formatting#mode" = "hA";

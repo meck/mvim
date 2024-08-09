@@ -227,7 +227,13 @@ in
     }
   ];
 
-  plugins.which-key.registrations."<leader>"."l".name = "  LSP";
+  plugins.which-key.settings.spec = [
+    {
+      __unkeyed-1 = "<leader>l";
+      icon = " ";
+      group = "LSP";
+    }
+  ];
 
   plugins.fidget.enable = true;
 

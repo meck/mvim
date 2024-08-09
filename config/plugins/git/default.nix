@@ -9,7 +9,12 @@ _: {
     };
     diffview.enable = true;
     gitsigns.enable = true;
-    which-key.registrations."<leader>"."g".name = "󰊢  Git";
+    which-key.settings.spec = [
+      {
+        __unkeyed-1 = "<leader>g";
+        group = "Git";
+      }
+    ];
   };
 
   keymaps = [
