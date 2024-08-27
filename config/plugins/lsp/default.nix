@@ -54,9 +54,7 @@ in
         package = null;
       };
       typst-lsp = {
-        # TODO: Reenable when it's fixed
-        # https://github.com/NixOS/nixpkgs/issues/332957
-        # enable = true; 
+        enable = true; 
         extraOptions.settings.exportPdf = "never";
       };
       bashls.enable = true;
