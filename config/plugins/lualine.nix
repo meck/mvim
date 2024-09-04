@@ -72,6 +72,6 @@
 
   plugins.navic = {
     enable = true;
-    lsp.autoAttach = true;
+    settings.lsp.autoAttach = true;
   };
 }
