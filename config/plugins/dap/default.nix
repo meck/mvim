@@ -8,7 +8,7 @@ lib.mkIf (!config.mvim.small) {
   # Put the configurations in lua for now
   extraConfigLuaPost = builtins.readFile ./dap.lua;
 
-  plugins.lualine.extensions = [ "nvim-dap-ui" ];
+  plugins.lualine.settings.extensions = [ "nvim-dap-ui" ];
 
   plugins.dap = {
     enable = true;

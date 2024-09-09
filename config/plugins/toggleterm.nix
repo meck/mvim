@@ -16,5 +16,5 @@
     };
   };
 
-  plugins.lualine.extensions = [ "toggleterm" ];
+  plugins.lualine.settings.extensions = [ "toggleterm" ];
 }

@@ -8,7 +8,7 @@
         group = "Trouble";
       }
     ];
-    lualine.extensions = [ "trouble" ];
+    lualine.settings.extensions = [ "trouble" ];
   };
 
   keymaps = [
