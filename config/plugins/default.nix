@@ -20,7 +20,6 @@
     ./toggleterm.nix
     ./treesitter.nix
     ./trouble.nix
-    ./typst.nix
     ./which-key.nix
   ];
 

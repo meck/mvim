@@ -53,9 +53,12 @@ in
         # Install per project
         package = null;
       };
-      typst-lsp = {
-        enable = true; 
-        extraOptions.settings.exportPdf = "never";
+      tinymist = {
+        enable = true;
+        settings = {
+          exportPdf = "never";
+          formatterMode = "typstyle";
+        };
       };
       bashls.enable = true;
       cmake.enable = true;

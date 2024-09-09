@@ -15,7 +15,6 @@ lib.mkMerge [
           vint.enable = !config.mvim.small;
         };
         formatting = {
-          typstfmt.enable = true;
           shfmt = {
             enable = true;
             settings =
