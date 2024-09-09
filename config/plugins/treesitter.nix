@@ -4,10 +4,13 @@
     settings = {
       indent.enable = true;
       incrementalSelection.enable = false;
-      highlight.disable = [
-        "markdown"
-        "markdown-inline"
-      ];
+      highlight = {
+        enable = true;
+        disable = [
+          "markdown"
+          "markdown-inline"
+        ];
+      };
     };
   };
 }
