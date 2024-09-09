@@ -2,6 +2,8 @@ _: {
   colorscheme = "nordfox";
   colorschemes = {
     melange.enable = true;
+    catppuccin.enable = true;
+    everforest.enable = true;
     nightfox = {
       enable = true;
       flavor = "nordfox";
