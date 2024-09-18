@@ -46,6 +46,14 @@ in
     servers = {
       clangd = {
         enable = true;
+        # Defaults includes .proto
+        filetypes = [
+          "c"
+          "cpp"
+          "objc"
+          "objcpp"
+          "cuda"
+        ];
         package = lib.mkIf small null;
       };
       hls = {

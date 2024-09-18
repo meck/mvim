@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  inherit (config.mvim) small;
+in
 lib.mkMerge [
   {
     plugins.none-ls = {
@@ -12,9 +15,15 @@ lib.mkMerge [
         diagnostics = {
           checkmake.enable = true;
           hadolint.enable = true;
-          vint.enable = !config.mvim.small;
+          vint.enable = !small;
+          protolint.enable = !small;
+          proselint.enable = true;
         };
         formatting = {
+          # Formatting fails as the linter complains 
+          # about the temp file name and renames it.
+          # https://github.com/nvimtools/none-ls.nvim/pull/34
+          # protolint.enable = !small;
           shfmt = {
             enable = true;
             settings =
