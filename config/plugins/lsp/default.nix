@@ -26,10 +26,23 @@ in
     # NOTE: 'server.settings' dosent work...
     # https://github.com/nix-community/nixvim/issues/1258 
     settings = {
-      server.default_settings = {
-        checkOnSave = true;
-        cargo.features = "all";
-        check.command = "clippy";
+      server.default_settings.rust-analyzer = {
+        cargo = {
+          allTargets = true;
+          features = "all";
+          extraEnv.RUSTFLAGS = builtins.concatStringsSep " " [
+            "-Dclippy::enum_glob_use" # Disallow use of `use` of all enums.
+            "-Dclippy::pedantic" # Enable all pedantic lints.
+            "-Dclippy::nursery" # Enable all nursery lints.
+            "-Dclippy::unwrap_used" # Disallow use of `unwrap`.
+            "-Dclippy::complexity"
+            "-Dclippy::perf"
+          ];
+        };
+        check = {
+          command = "clippy";
+          extraArgs = [ "--no-deps" ];
+        };
       };
       tools = {
         crate_test_executor = "toggleterm";
