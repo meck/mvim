@@ -5,6 +5,7 @@
     ./copilot.nix
     ./dap
     ./git
+    ./icons.nix
     ./indent-blankline.nix
     ./lsp
     ./lualine.nix

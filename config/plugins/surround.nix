@@ -1,1 +1,1 @@
-{ plugins.surround.enable = true; }
+{ plugins.vim-surround.enable = true; }
