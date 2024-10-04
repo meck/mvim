@@ -3,13 +3,20 @@ lib.mkIf (!config.mvim.small) {
   plugins = {
     lsp.servers.ltex = {
       enable = true;
+      # https://github.com/nix-community/nixvim/issues/2361
+      filetypes = [
+        "gitcommit"
+        "mail"
+        "markdown"
+        "pandoc"
+        "text"
+        "typst"
+      ];
+      autostart = false;
       settings = {
-        enabled = [
-          "markdown"
-          "tex"
-          "mail"
-          "gitcommit"
-        ];
+        # enable for all markup files
+        # (not source code files)
+        enabled = true;
         language = "en-US";
       };
       onAttach.function = builtins.readFile ./ltex_attach.lua;
@@ -28,4 +35,32 @@ lib.mkIf (!config.mvim.small) {
       };
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>lt";
+      action.__raw = ''
+        function() 
+          local server_name = "ltex"
+          local bufnr = vim.api.nvim_get_current_buf()
+          local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+          for _, client in ipairs(clients) do
+            if client.name == server_name then
+              vim.notify("Stopping LTeX-ls", "info")
+              vim.api.nvim_command('LspStop ' .. client.id)
+              return
+            end
+          end
+          vim.notify("Starting LTeX-ls", "info")
+          vim.api.nvim_command('LspStart ' .. server_name)
+        end
+      '';
+      options = {
+        silent = true;
+        desc = "LSP: toggle LTeX";
+      };
+    }
+  ];
+
 }
