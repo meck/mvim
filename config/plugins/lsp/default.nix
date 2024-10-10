@@ -30,14 +30,6 @@ in
         cargo = {
           allTargets = true;
           features = "all";
-          extraEnv.RUSTFLAGS = builtins.concatStringsSep " " [
-            "-Dclippy::enum_glob_use" # Disallow use of `use` of all enums.
-            "-Dclippy::pedantic" # Enable all pedantic lints.
-            "-Dclippy::nursery" # Enable all nursery lints.
-            "-Dclippy::unwrap_used" # Disallow use of `unwrap`.
-            "-Dclippy::complexity"
-            "-Dclippy::perf"
-          ];
         };
         check = {
           command = "clippy";
