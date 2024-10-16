@@ -65,6 +65,7 @@ in
         enable = true;
         # Install per project
         package = null;
+        installGhc = false;
       };
       tinymist = {
         enable = true;
