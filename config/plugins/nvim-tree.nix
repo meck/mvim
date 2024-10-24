@@ -19,7 +19,7 @@
     }
     {
       mode = "n";
-      key = "-";
+      key = "<leader>-";
       action = "<cmd>:NvimTreeFindFile<cr>";
       options = {
         silent = true;

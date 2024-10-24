@@ -14,6 +14,7 @@
     ./notify.nix
     ./nvim-autopairs.nix
     ./nvim-tree.nix
+    ./oil.nix
     ./pandoc.nix
     ./surround.nix
     ./telescope.nix
