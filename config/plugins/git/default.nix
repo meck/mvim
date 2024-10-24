@@ -21,8 +21,13 @@ _: {
     {
       mode = "n";
       key = "gk";
-      action.__raw = # lua
-        "require('neogit').open";
+      action.__raw =
+        # lua
+        ''
+          function()
+            require('neogit').open({ kind = 'replace'});
+          end
+        '';
       options = {
         silent = true;
         desc = "neogit: open";
