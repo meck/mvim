@@ -87,10 +87,10 @@ in
           diagnostic.suppress = [ "sema-escaping-with" ];
           formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
-        onAttach.function = # lua
-          ''
-            client.server_capabilities.semanticTokensProvider = nil
-          '';
+        # onAttach.function = # lua
+        #   ''
+        #     client.server_capabilities.semanticTokensProvider = nil
+        #   '';
       };
     };
 
@@ -99,21 +99,6 @@ in
       ''
         -- Turn on signcolumn for the current window
         vim.wo.signcolumn = "yes"
-
-        -- Highlight item under the cursor
-        if client.server_capabilities.documentHighlightProvider then
-            local group_id = vim.api.nvim_create_augroup(("_lsp_highlight_%d"):format(bufnr), { clear = true })
-            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                buffer = bufnr,
-                callback = vim.lsp.buf.document_highlight,
-                group = group_id,
-            })
-            vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-                buffer = bufnr,
-                callback = vim.lsp.buf.clear_references,
-                group = group_id,
-            })
-        end
 
         -- Update code lenses
         if client.server_capabilities.codeLensProvider then
