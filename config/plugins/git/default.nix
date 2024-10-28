@@ -3,6 +3,7 @@ _: {
     neogit = {
       enable = true;
       settings = {
+        graph_style = "unicode";
         auto_refresh = true;
         integrations.diffview = true;
       };
