@@ -3,7 +3,7 @@ _: {
     copilot-lua = {
       enable = true;
       suggestion = {
-        autoTrigger = true;
+        autoTrigger = false;
         keymap = {
           accept = "<M-l>";
           prev = "<M-[>";
@@ -27,14 +27,15 @@ _: {
     ];
   };
 
-  # extraConfigLua = # lua
-  #   ''
-  #     -- NOTE: Cmp integrations not yet in nixpkgs
-  #     -- see docs for mappings when activating
-  #     require("CopilotChat.integrations.cmp").setup()
-  #   '';
-
   keymaps = [
+    {
+      mode = "n";
+      key = "<leader>ct";
+      action.__raw = # lua
+        "require('copilot.suggestion').toggle_auto_trigger";
+      options.desc = "Copilot: Toggle auto trigger";
+    }
+
     {
       mode = "n";
       key = "<leader>cc";
@@ -56,6 +57,7 @@ _: {
         '';
       options.desc = "CopilotChat: Quick chat";
     }
+
     {
       mode = [
         "v"
@@ -70,6 +72,7 @@ _: {
         '';
       options.desc = "CopilotChat: Quick help";
     }
+
     {
       mode = [
         "v"

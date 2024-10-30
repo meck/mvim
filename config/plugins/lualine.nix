@@ -62,6 +62,19 @@
                   end
                 '';
             }
+
+            {
+              __unkeyed-1.__raw =
+                # lua
+                ''
+                  function()
+                    if vim.b.copilot_suggestion_auto_trigger then
+                      return ""
+                    end
+                    return ""
+                  end,
+                '';
+            }
           ];
           lualine_b = [
             "branch"
