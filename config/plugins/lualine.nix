@@ -62,7 +62,17 @@
                   end
                 '';
             }
-
+          ];
+          lualine_b = [
+            "branch"
+            diffSec
+          ];
+          lualine_c = [
+            filenameSec
+            "navic"
+          ];
+          lualine_x = [
+            "spaces"
             {
               __unkeyed-1.__raw =
                 # lua
@@ -75,17 +85,6 @@
                   end,
                 '';
             }
-          ];
-          lualine_b = [
-            "branch"
-            diffSec
-          ];
-          lualine_c = [
-            filenameSec
-            "navic"
-          ];
-          lualine_x = [
-            "spaces"
             "encoding"
             "filetype"
           ];
@@ -96,10 +95,7 @@
           ];
         };
         inactive_sections = {
-          lualine_b = [
-            "branch"
-            diffSec
-          ];
+          lualine_b = [ "branch" ];
           lualine_c = [ filenameSec ];
         };
       };
