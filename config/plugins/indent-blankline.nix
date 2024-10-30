@@ -15,11 +15,12 @@
           # lua
           ''
             function()
+                local ibl = require 'ibl'
                 if vim.v.option_type == "local" then
-                    if vim.v.option_new == "1" then
-                        vim.cmd([[IBLEnable]])
+                    if vim.v.option_new == true then
+                        ibl.setup_buffer(buf, { enabled = true })
                     else
-                        vim.cmd([[IBLDisable]])
+                        ibl.setup_buffer(buf, { enabled = false })
                     end
                 end
             end
