@@ -46,8 +46,6 @@ in
   plugins.lsp = {
     enable = true;
     inlayHints = true;
-    # https://github.com/neovim/nvim-lspconfig/issues/2184
-    # capabilities = "capabilities.offsetEncoding = 'utf-16'";
     servers = {
       clangd = {
         enable = true;
@@ -87,11 +85,6 @@ in
           diagnostic.suppress = [ "sema-escaping-with" ];
           formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
-        # Dosent work with the `# lua` in nixvim
-        onAttach.function = # lua
-          ''
-            client.server_capabilities.semanticTokensProvider = nil
-          '';
       };
     };
 
