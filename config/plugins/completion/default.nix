@@ -1,10 +1,6 @@
 _: {
   plugins = {
-    luasnip = {
-      enable = true;
-      fromLua = [ { paths = ./snippets; } ];
-    };
-
+    luasnip.enable = true;
     friendly-snippets.enable = true;
 
     lspkind = {
