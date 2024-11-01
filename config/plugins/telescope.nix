@@ -4,27 +4,57 @@
     enable = true;
     settings = {
       defaults = {
-        prompt_prefix = " ";
+        prompt_prefix = "󰄾  ";
         selection_caret = " ";
-        mappings = {
-          i = {
-            "<esc>" = {
-              __raw = ''
-                function(...)
-                  return require("telescope.actions").close(...)
-                end'';
-            };
-          };
+        multi_icon = "┃";
+        mappings.i."<esc>".__raw = # lua
+          ''
+            function(...)
+              return require("telescope.actions").close(...)
+            end
+          '';
+      };
+      pickers = {
+        builtin = {
+          theme = "dropdown";
+          preview.hide_on_startup = true;
+          include_extensions = true;
+          use_default_opts = true;
         };
+        autocommands.theme = "ivy";
+        colorscheme.theme = "ivy";
+        command_history.theme = "ivy";
+        commands.theme = "ivy";
+        diagnostics.theme = "ivy";
+        filetypes.theme = "ivy";
+        find_files.theme = "ivy";
+        git_buffers.theme = "ivy";
+        git_files.theme = "ivy";
+        git_status.theme = "ivy";
+        help_tags.theme = "ivy";
+        highlights.theme = "ivy";
+        keymaps.theme = "ivy";
+        live_grep.theme = "ivy";
+        loclist.theme = "ivy";
+        lsp_definitions.theme = "ivy";
+        lsp_document_symbols = "ivy";
+        lsp_implementations.theme = "ivy";
+        lsp_references.theme = "ivy";
+        lsp_type_definitions.theme = "ivy";
+        lsp_workspace_symbols = "ivy";
+        man_pages.theme = "ivy";
+        quickfix.theme = "ivy";
+        quickfixhistory.theme = "ivy";
+        search_history.theme = "ivy";
+        spell_suggest.theme = "cursor";
       };
     };
 
     extensions = {
       ui-select = {
         enable = true;
-        settings = {
-          __raw = "{ require('telescope.themes').get_dropdown({ previewer = false }) }";
-        };
+        settings.__raw = # lua
+          "{ require('telescope.themes').get_dropdown({ previewer = false }) }";
       };
       undo = {
         enable = true;
@@ -33,6 +63,11 @@
     };
 
     keymaps = {
+      "<leader><leader>" = {
+        options.desc = "Telescope: builtin";
+        action = "builtin";
+      };
+
       "<leader>/" = {
         options.desc = "Telescope: grep";
         action = "live_grep";
@@ -82,36 +117,13 @@
         options.desc = "Telescope: diagnostics";
         action = "diagnostics";
       };
+
+      "<leader>u" = {
+        options.desc = "Telescope: undo history";
+        action = "undo";
+      };
     };
   };
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader><leader>";
-      action.__raw =
-        # lua
-        ''
-          function()
-              local theme = require("telescope.themes").get_dropdown({ previewer = false })
-              require('telescope.builtin').builtin(theme)
-          end
-        '';
-      options = {
-        silent = true;
-        desc = "Telescope: builtins";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>u";
-      action.__raw = "require('telescope').extensions.undo.undo";
-      options = {
-        silent = true;
-        desc = "Telescope: undo history";
-      };
-    }
-  ];
 
   # For undo extension
   extraPackages = with pkgs; [ delta ];
