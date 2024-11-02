@@ -10,13 +10,13 @@
     ./indent-blankline.nix
     ./lsp
     ./lualine.nix
+    ./markdown.nix
     ./neogen.nix
     ./none-ls
     ./notify.nix
     ./nvim-autopairs.nix
     ./nvim-tree.nix
     ./oil.nix
-    ./pandoc.nix
     ./surround.nix
     ./telescope.nix
     ./tmux-navigator.nix

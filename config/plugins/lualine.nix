@@ -50,18 +50,6 @@
                 '';
             }
 
-            {
-              __unkeyed-1.__raw =
-                # lua
-                ''
-                  function()
-                      if vim.fn["g:tablemode#IsActive"]() == 1 then
-                          return " "
-                      end
-                      return ""
-                  end
-                '';
-            }
           ];
           lualine_b = [
             "branch"

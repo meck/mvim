@@ -79,6 +79,7 @@ in
       # Large size
       yamlls.enable = !small;
       taplo.enable = true;
+      marksman.enable = true;
       nixd = {
         enable = true;
         settings = {

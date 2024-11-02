@@ -17,7 +17,6 @@ lib.mkMerge [
           hadolint.enable = true;
           vint.enable = !small;
           protolint.enable = !small;
-          proselint.enable = true;
         };
         formatting = {
           # Formatting fails as the linter complains 
