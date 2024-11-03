@@ -1,6 +1,7 @@
 _: {
   plugins.mini = {
     enable = true;
+    mockDevIcons = true;
     modules = {
       align = {
         mappings = {
@@ -8,6 +9,7 @@ _: {
           start_with_preview = "ga";
         };
       };
+      icons = { };
       pairs = { };
       surround = { };
     };
