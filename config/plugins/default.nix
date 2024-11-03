@@ -11,13 +11,12 @@
     ./lsp
     ./lualine.nix
     ./markdown.nix
+    ./mini.nix
     ./neogen.nix
     ./none-ls
     ./notify.nix
-    ./nvim-autopairs.nix
     ./nvim-tree.nix
     ./oil.nix
-    ./surround.nix
     ./telescope.nix
     ./tmux-navigator.nix
     ./toggleterm.nix
@@ -26,9 +25,5 @@
     ./which-key.nix
   ];
 
-  extraPlugins = with pkgs.vimPlugins; [
-    vim-unimpaired
-    vim-repeat
-    tabular
-  ];
+  extraPlugins = with pkgs.vimPlugins; [ vim-unimpaired ];
 }
