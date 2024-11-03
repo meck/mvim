@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./completion
+    ./blink-cmp.nix
     ./copilot.nix
     ./dap
     ./git
