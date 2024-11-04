@@ -22,6 +22,7 @@
           use_default_opts = true;
         };
         autocommands.theme = "ivy";
+        buffers.theme = "ivy";
         colorscheme.theme = "ivy";
         command_history.theme = "ivy";
         commands.theme = "ivy";
@@ -122,6 +123,12 @@
         options.desc = "Telescope: undo history";
         action = "undo";
       };
+
+      "z=" = {
+        options.desc = "Telescope: spell suggest";
+        action = "spell_suggest";
+      };
+
     };
   };
 

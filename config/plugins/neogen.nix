@@ -1,6 +1,6 @@
 {
   plugins.neogen = {
     enable = true;
-    snippetEngine = "luasnip";
+    snippetEngine = "nvim";
   };
 }
