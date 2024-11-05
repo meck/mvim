@@ -3,7 +3,7 @@
   imports = [
     ./blink-cmp.nix
     ./copilot.nix
-    ./dap
+    ./dap.nix
     ./git
     ./illuminate.nix
     ./indent-blankline.nix

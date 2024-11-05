@@ -5,49 +5,19 @@
   ...
 }:
 lib.mkIf (!config.mvim.small) {
-  # Put the configurations in lua for now
-  extraConfigLuaPost = builtins.readFile ./dap.lua;
 
   plugins.lualine.settings.extensions = [ "nvim-dap-ui" ];
 
   plugins.dap = {
     enable = true;
-
     extensions.dap-ui.enable = true;
-
-    adapters = {
-      executables = {
-        cppdbg = {
-          id = "cppdbg";
-          command = "OpenDebugAD7";
-        };
-        lldb = {
-          id = "cppdbg";
-          command = "lldb-vscode";
-        };
-      };
-
-      servers = {
-        codelldb = {
-          port = ''''${port}'';
-          executable = {
-            command = "codelldb";
-            args = [
-              "--port"
-              ''''${port}''
-            ];
-          };
-        };
-      };
-    };
-
     signs = {
       dapBreakpoint = {
-        text = " ";
+        text = " ";
         texthl = "DiagnosticInfo";
       };
       dapBreakpointCondition = {
-        text = " ";
+        text = " ";
         texthl = "DiagnosticInfo";
       };
       dapBreakpointRejected = {
@@ -59,7 +29,7 @@ lib.mkIf (!config.mvim.small) {
         texthl = "DiagnosticInfo";
       };
       dapStopped = {
-        text = "󰁕 ";
+        text = " ";
         texthl = "DiagnosticWarn";
         linehl = "DapStoppedLine";
         numhl = "DapStoppedLine";
@@ -82,7 +52,7 @@ lib.mkIf (!config.mvim.small) {
         "require('dap').toggle_breakpoint";
       options = {
         silent = true;
-        desc = "Dap: toggle breakpoint";
+        desc = "Toggle breakpoint";
       };
     }
 
@@ -93,40 +63,40 @@ lib.mkIf (!config.mvim.small) {
         "require('dap').continue";
       options = {
         silent = true;
-        desc = "Dap: continue";
+        desc = "Continue (Start)";
       };
     }
 
     {
       mode = "n";
-      key = "<leader>dn";
+      key = "<leader>ds";
       action.__raw = # lua
         "require('dap').step_over";
       options = {
         silent = true;
-        desc = "Dap: step over";
+        desc = "Step over";
       };
     }
 
     {
       mode = "n";
-      key = "<leader>dj";
+      key = "<leader>dS";
       action.__raw = # lua
         "require('dap').step_into";
       options = {
         silent = true;
-        desc = "Dap: step into";
+        desc = "Step into";
       };
     }
 
     {
       mode = "n";
-      key = "<leader>dk";
+      key = "<leader>do";
       action.__raw = # lua
         "require('dap').step_out";
       options = {
         silent = true;
-        desc = "Dap: step out";
+        desc = "Step out";
       };
     }
 
@@ -137,7 +107,7 @@ lib.mkIf (!config.mvim.small) {
         "require('dap').run_to_cursor";
       options = {
         silent = true;
-        desc = "Dap: run to cursor";
+        desc = "Run to cursor";
       };
     }
 
@@ -148,7 +118,7 @@ lib.mkIf (!config.mvim.small) {
         "require('dap').terminate";
       options = {
         silent = true;
-        desc = "Dap: terminate";
+        desc = "Terminate";
       };
     }
 
@@ -156,7 +126,12 @@ lib.mkIf (!config.mvim.small) {
       mode = "n";
       key = "<leader>dd";
       action.__raw = # lua
-        "require('dapui').toggle";
+        ''
+          function()
+            require('dap.ext.vscode').load_launchjs(nil, {})
+            require("dapui").toggle()
+          end
+        '';
       options = {
         silent = true;
         desc = "Dap: toggle ui";
@@ -166,23 +141,12 @@ lib.mkIf (!config.mvim.small) {
 
   extraPackages =
     with pkgs;
-    let
-      vscode-cpptools = runCommand "vscode-cpptools" { } ''
-        mkdir -p $out/bin
-        ln -s ${vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7 \
-          $out/bin/
-      '';
-
-      vscode-codelldb = runCommand "codelldb" { } ''
-        mkdir -p $out/bin
-        ln -s ${vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb \
-          $out/bin/
-      '';
-    in
-    [ lldb ]
+    [
+      lldb
+      gdb
+    ]
     # Only available/building on x86_64-linux
     ++ lib.optionals (stdenv.isLinux && stdenv.isx86_64) [
-      vscode-cpptools
-      vscode-codelldb
+      vscode-extensions.vadimcn.vscode-lldb.adapter
     ];
 }
