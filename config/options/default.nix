@@ -104,6 +104,17 @@
           '';
         };
       }
+
+      {
+        desc = "Remove kitty padding on enter";
+        event = [ "VimEnter" ];
+        command = ":silent ![ \"x$TERM\" = \"xxterm-kitty\" ] && kitty @ set-spacing padding=0 margin=0";
+      }
+      {
+        desc = "Restore kitty padding on leave";
+        event = [ "VimLeave" ];
+        command = ":silent ![ \"x$TERM\" = \"xxterm-kitty\" ] && kitty @ set-spacing padding=default margin=default";
+      }
     ];
 
     extraConfigLuaPre =
