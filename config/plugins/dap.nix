@@ -134,7 +134,7 @@ lib.mkIf (!config.mvim.small) {
         '';
       options = {
         silent = true;
-        desc = "Dap: toggle ui";
+        desc = "Toggle ui";
       };
     }
   ];
@@ -143,10 +143,6 @@ lib.mkIf (!config.mvim.small) {
     with pkgs;
     [
       lldb
-      gdb
-    ]
-    # Only available/building on x86_64-linux
-    ++ lib.optionals (stdenv.isLinux && stdenv.isx86_64) [
       vscode-extensions.vadimcn.vscode-lldb.adapter
     ];
 }
