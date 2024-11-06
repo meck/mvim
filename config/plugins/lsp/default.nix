@@ -65,13 +65,6 @@ in
         package = null;
         installGhc = false;
       };
-      tinymist = {
-        enable = true;
-        settings = {
-          exportPdf = "never";
-          formatterMode = "typstyle";
-        };
-      };
       bashls.enable = true;
       cmake.enable = true;
       pyright.enable = !small;
@@ -79,7 +72,6 @@ in
       # Large size
       yamlls.enable = !small;
       taplo.enable = true;
-      marksman.enable = true;
       nixd = {
         enable = true;
         settings = {

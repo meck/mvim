@@ -9,7 +9,7 @@
     ./indent-blankline.nix
     ./lsp
     ./lualine.nix
-    ./markdown.nix
+    ./markup.nix
     ./mini.nix
     ./neogen.nix
     ./none-ls
