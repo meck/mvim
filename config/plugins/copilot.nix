@@ -15,7 +15,13 @@ _: {
     copilot-chat = {
       enable = true;
       settings = {
+        model = "claude-3.5-sonnet";
+        question_header = "󱜸  Question ";
+        answer_header = "  Copilot ";
+        error_header = "  Error ";
         window.layout = "horizontal";
+        show_folds = false;
+        show_help = false;
       };
     };
     which-key.settings.spec = [
@@ -26,6 +32,21 @@ _: {
       }
     ];
   };
+
+  autoCmd = [
+    {
+      event = [ "BufEnter" ];
+      pattern = [ "copilot-*" ];
+      callback = {
+        __raw = ''
+          function()
+            vim.opt_local.number = false
+            vim.opt_local.signcolumn = "no"
+          end
+        '';
+      };
+    }
+  ];
 
   keymaps = [
     {
@@ -49,10 +70,27 @@ _: {
       action.__raw = # lua
         ''
           function()
-            local input = vim.fn.input("Quick Chat (Buffer): ")
-            if input ~= "" then
-              require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-            end
+            vim.ui.input({ prompt = "Quick Chat (Buffer): " }, function(input)
+              if input ~= nil and input ~= "" then
+                require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+              end
+            end)
+          end 
+        '';
+      options.desc = "CopilotChat: Quick chat";
+    }
+
+    {
+      mode = "v";
+      key = "<leader>cq";
+      action.__raw = # lua
+        ''
+          function()
+            vim.ui.input({ prompt = "Quick Chat (Selection): " }, function(input)
+              if input ~= nil and input ~= "" then
+                require("CopilotChat").ask(input, { selection = require("CopilotChat.select").visual })
+              end
+            end)
           end
         '';
       options.desc = "CopilotChat: Quick chat";
