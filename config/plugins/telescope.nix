@@ -51,16 +51,9 @@
       };
     };
 
-    extensions = {
-      ui-select = {
-        enable = true;
-        settings.__raw = # lua
-          "{ require('telescope.themes').get_dropdown({ previewer = false }) }";
-      };
-      undo = {
-        enable = true;
-        settings.useDelta = true;
-      };
+    extensions.undo = {
+      enable = true;
+      settings.useDelta = true;
     };
 
     keymaps = {
@@ -131,6 +124,8 @@
 
     };
   };
+
+  plugins.dressing.enable = true;
 
   # For undo extension
   extraPackages = with pkgs; [ delta ];
