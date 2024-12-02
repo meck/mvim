@@ -8,12 +8,12 @@ _: {
   plugins.blink-cmp = {
     enable = true;
     settings = {
-      keymap.__raw = "'super-tab'";
+      keymap.preset = "super-tab";
       trigger.signature_help.enabled = true;
-      completion.show_in_snippet = false;
+      trigger.completion.show_in_snippet = false;
       highlight.use_nvim_cmp_as_default = true;
       windows = {
-        autocomplete.draw = "reversed";
+        autocomplete.draw.columns.__raw = ''{{ "label", "label_description", gap = 1 }, { "kind_icon", "kind" }}'';
         documentation.auto_show = true;
       };
     };
