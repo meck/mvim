@@ -1,7 +1,6 @@
 _: {
 
   # TODO:
-  # - [ ] In Nixvim: https://github.com/Saghen/blink.cmp/commit/708a4a9ba2c9b235ed98cd79bde65aa05b7f32be    
   # - [ ] Add cmp.compat?
   # - [ ] Command line completion
 
@@ -9,13 +8,13 @@ _: {
     enable = true;
     settings = {
       keymap.preset = "super-tab";
-      trigger.signature_help.enabled = true;
-      trigger.completion.show_in_snippet = false;
-      highlight.use_nvim_cmp_as_default = true;
-      windows = {
-        autocomplete.draw.columns.__raw = ''{{ "label", "label_description", gap = 1 }, { "kind_icon", "kind" }}'';
+      signature.enabled = true;
+      completion = {
         documentation.auto_show = true;
+        trigger.show_in_snippet = false;
+        menu.draw.columns.__raw = ''{{ "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" }}'';
       };
+      appearance.use_nvim_cmp_as_default = true;
     };
   };
 
