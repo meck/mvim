@@ -1,9 +1,4 @@
 _: {
-
-  # TODO:
-  # - [ ] Add cmp.compat?
-  # - [ ] Command line completion
-
   plugins.blink-cmp = {
     enable = true;
     settings = {
@@ -12,9 +7,11 @@ _: {
       completion = {
         documentation.auto_show = true;
         trigger.show_in_snippet = false;
-        menu.draw.columns.__raw = ''{{ "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" }}'';
       };
-      appearance.use_nvim_cmp_as_default = true;
+      appearance = {
+        nerd_font_variant = "normal";
+        use_nvim_cmp_as_default = true;
+      };
     };
   };
 
