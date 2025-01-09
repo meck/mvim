@@ -2,6 +2,7 @@ _: {
   plugins.blink-cmp = {
     enable = true;
     settings = {
+      fuzzy.prebuilt_binaries.download = false;
       keymap.preset = "super-tab";
       signature.enabled = true;
       completion = {

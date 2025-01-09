@@ -2,7 +2,7 @@ _: {
   plugins = {
     copilot-lua = {
       enable = true;
-      suggestion = {
+      settings.suggestion = {
         autoTrigger = false;
         keymap = {
           accept = "<M-l>";
