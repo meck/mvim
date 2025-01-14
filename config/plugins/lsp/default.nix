@@ -12,9 +12,9 @@ in
 
   plugins.clangd-extensions = {
     enable = true;
-    inlayHints = {
-      parameterHintsPrefix = "ᐊ ";
-      otherHintsPrefix = "» ";
+    settings.inlay_hints = {
+      other_hints_prefix = "» ";
+      parameter_hints_prefix = "» ";
     };
   };
 
@@ -24,7 +24,7 @@ in
     rustAnalyzerPackage = null;
 
     # NOTE: 'server.settings' dosent work...
-    # https://github.com/nix-community/nixvim/issues/1258 
+    # https://github.com/nix-community/nixvim/issues/1258
     settings = {
       server.default_settings.rust-analyzer = {
         cargo = {
