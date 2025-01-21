@@ -20,5 +20,10 @@ jobs:
             dependencies
             automated
             automerge
+          pr-body: |
+            Automated changes:
+            ```
+            {{ env.GIT_COMMIT_MESSAGE }}
+            ```
           commit-msg: "chore: update flake.lock"
           token: ${{ secrets.GH_REPO_PAT }}
