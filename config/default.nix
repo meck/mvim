@@ -10,7 +10,9 @@
   config = {
     nixpkgs.overlays = [
       (final: prev: {
-        neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (old: {
+        oelint-adv = prev.oelint-adv.overridePythonAttrs (oldAttrs: {
+          # Fails on aarch64-darwin
+          doCheck = false;
         });
       })
     ];
