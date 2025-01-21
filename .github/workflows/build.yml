@@ -34,3 +34,15 @@ jobs:
 
     - name: Flake check
       run: nix -L flake check
+
+  automerge:
+    if: contains(github.event.pull_request.labels.*.name, 'automerge')
+    needs: [build-check]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - run: gh pr merge --rebase --auto
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
