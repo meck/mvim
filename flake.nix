@@ -18,7 +18,7 @@
     {
       # Add `inputs.mvim.homeManagerModules.default` to imports
       # set `programs.nixvim.mvim.small = true;` to use small version
-      homeManagerModules.default = import ./modules/home-manager.nix { inherit nixvim; };
+      homeManagerModules.default = import ./modules/home-manager.nix { inherit nixvim inputs; };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
