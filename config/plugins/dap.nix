@@ -10,7 +10,6 @@ lib.mkIf (!config.mvim.small) {
 
   plugins.dap = {
     enable = true;
-    extensions.dap-ui.enable = true;
     signs = {
       dapBreakpoint = {
         text = " ";
@@ -36,6 +35,8 @@ lib.mkIf (!config.mvim.small) {
       };
     };
   };
+
+  plugins.dap-ui.enable = true;
 
   plugins.which-key.settings.spec = [
     {
