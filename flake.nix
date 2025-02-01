@@ -5,6 +5,10 @@
     nixpkgs.follows = "nixvim/nixpkgs";
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+    };
   };
 
   outputs =
@@ -13,6 +17,7 @@
       nixpkgs,
       nixvim,
       flake-utils,
+      treefmt-nix,
       ...
     }@inputs:
     {
@@ -30,6 +35,24 @@
           config.allowUnfree = true;
         };
 
+        treefmt =
+          (treefmt-nix.lib.evalModule pkgs {
+            projectRootFile = "flake.nix";
+            settings.global.excludes = [
+              "README.md"
+              "*.vim"
+            ];
+            programs.nixfmt.enable = true;
+            programs.stylua = {
+              enable = true;
+              settings = {
+                indent_width = 4;
+                indent_type = "Spaces";
+              };
+            };
+            programs.yamlfmt.enable = true;
+          }).config.build;
+
         nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
           inherit pkgs;
           module = import ./config;
@@ -46,6 +69,9 @@
           };
       in
       {
+
+        formatter = treefmt.wrapper;
+
         # `nix run .`
         packages = {
           default = nvim;
@@ -56,6 +82,7 @@
         checks = {
           default = mkNvimCheck nvim;
           small = mkNvimCheck nvim-small;
+          formatting = treefmt.check self;
         };
       }
     );
