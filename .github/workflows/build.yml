@@ -1,28 +1,23 @@
 name: "Build"
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
-
 jobs:
   build:
     strategy:
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
+        os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: "Nix build and check (${{ matrix.os }})"
     steps:
-    - uses: actions/checkout@v4
-
-    - uses: DeterminateSystems/nix-installer-action@v16
-
-    - uses: cachix/cachix-action@v15
-      with:
-        name: meck
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-
-    - name: Build full cfg
-      run: nix -L build .#
-
-    - name: Build small cfg
-      run: nix -L build .#small
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: cachix/cachix-action@v15
+        with:
+          name: meck
+          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+      - name: Build full cfg
+        run: nix -L build .#
+      - name: Build small cfg
+        run: nix -L build .#small

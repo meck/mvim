@@ -19,7 +19,7 @@ lib.mkMerge [
           protolint.enable = !small;
         };
         formatting = {
-          # Formatting fails as the linter complains 
+          # Formatting fails as the linter complains
           # about the temp file name and renames it.
           # https://github.com/nvimtools/none-ls.nvim/pull/34
           # protolint.enable = !small;

@@ -1,29 +1,24 @@
 name: "Nix check"
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
-
 jobs:
   check:
     strategy:
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
+        os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: "Nix flake check (${{ matrix.os }})"
     steps:
-    - uses: actions/checkout@v4
-
-    - uses: DeterminateSystems/nix-installer-action@v16
-
-    - uses: cachix/cachix-action@v15
-      with:
-        name: meck
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-
-    - name: Flake check
-      run: nix -L flake check
-
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: cachix/cachix-action@v15
+        with:
+          name: meck
+          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+      - name: Flake check
+        run: nix -L flake check
   automerge:
     if: contains(github.event.pull_request.labels.*.name, 'automerge')
     needs: [check]
