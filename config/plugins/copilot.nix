@@ -2,13 +2,19 @@ _: {
   plugins = {
     copilot-lua = {
       enable = true;
-      settings.suggestion = {
-        autoTrigger = false;
-        keymap = {
-          accept = "<M-l>";
-          prev = "<M-[>";
-          next = "<M-]>";
-          dismiss = "<C-]>";
+      settings = {
+        suggestion = {
+          autoTrigger = false;
+          keymap = {
+            accept = "<M-l>";
+            prev = "<M-[>";
+            next = "<M-]>";
+            dismiss = "<C-]>";
+          };
+        };
+        filetypes = {
+          "." = false;
+          help = false;
         };
       };
     };
