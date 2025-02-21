@@ -48,7 +48,7 @@ fn.sign_define("DiagnosticSignHint", {
     texthl = "DiagnosticHint",
 })
 
-if vim.env.SSH_TTY and not vim.env.TMUX then
+if vim.env.SSH_TTY then
     g.clipboard = {
         name = "native OSC 52",
         copy = {
@@ -59,5 +59,22 @@ if vim.env.SSH_TTY and not vim.env.TMUX then
             ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
             ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
         },
+    }
+end
+
+if vim.env.SSH_TTY and vim.env.TMUX then
+    local copy = { "tmux", "load-buffer", "-w", "-" }
+    local paste = { "bash", "-c", "tmux refresh-client -l && sleep 0.05 && tmux save-buffer -" }
+    vim.g.clipboard = {
+        name = "tmux",
+        copy = {
+            ["+"] = copy,
+            ["*"] = copy,
+        },
+        paste = {
+            ["+"] = paste,
+            ["*"] = paste,
+        },
+        cache_enabled = 0,
     }
 end
