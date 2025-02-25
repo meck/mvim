@@ -14,11 +14,6 @@ in
       exportPdf = "never";
       formatterMode = "typstyle";
     };
-    # TODO: Spurious error messages with semantic tokens
-    onAttach.function = # lua
-      ''
-        client.server_capabilities.semanticTokensProvider = nil
-      '';
   };
 
   # Typst
@@ -37,6 +32,12 @@ in
           end,
         }
       '';
+
+  plugins.typst-vim = {
+    enable = true;
+    settings.pdf_viewer = "zathura";
+  };
+  globals.typst_conceal = "1";
 
   # Markdown
   plugins.lsp.servers.marksman.enable = true;
