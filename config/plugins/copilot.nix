@@ -107,21 +107,6 @@ _: {
         "v"
         "n"
       ];
-      key = "<leader>ch";
-      action.__raw = # lua
-        ''
-          function()
-            require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').help_actions())
-          end
-        '';
-      options.desc = "CopilotChat: Quick help";
-    }
-
-    {
-      mode = [
-        "v"
-        "n"
-      ];
       key = "<leader>cp";
       action.__raw = # lua
         ''
