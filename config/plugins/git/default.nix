@@ -3,7 +3,11 @@ _: {
     neogit = {
       enable = true;
       settings = {
-        graph_style = "unicode";
+        graph_style.__raw =
+          # lua
+          ''
+            vim.env.TERM == "xterm-kitty" and "kitty" or "unicode"
+          '';
         auto_refresh = true;
         integrations.diffview = true;
       };
