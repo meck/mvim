@@ -24,30 +24,6 @@ function _G.swe_mode_toggle()
     end
 end
 
--- Diagnostics
-vim.diagnostic.config({
-    virtual_text = false,
-    update_in_insert = true,
-})
-
--- Signs and their highlights
-fn.sign_define("DiagnosticSignError", {
-    text = "",
-    texthl = "DiagnosticError",
-})
-fn.sign_define("DiagnosticSignWarn", {
-    text = "",
-    texthl = "DiagnosticWarn",
-})
-fn.sign_define("DiagnosticSignInfo", {
-    text = "",
-    texthl = "DiagnosticInfo",
-})
-fn.sign_define("DiagnosticSignHint", {
-    text = "",
-    texthl = "DiagnosticHint",
-})
-
 if vim.env.SSH_TTY then
     g.clipboard = {
         name = "native OSC 52",
