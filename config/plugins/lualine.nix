@@ -18,6 +18,31 @@
             removed = " ";
           };
         };
+        copilotStatus = {
+          __unkeyed-1.__raw =
+            # lua
+            ''
+              function()
+                if vim.b.copilot_suggestion_auto_trigger then
+                  return ""
+                end
+                return ""
+              end,
+            '';
+        };
+        ltexStatus = {
+          __unkeyed-1.__raw =
+            # lua
+            ''
+              function()
+                local bufnr = vim.api.nvim_get_current_buf()
+                if vim.tbl_isempty(vim.lsp.get_clients({bufnr = bufnr, name = "ltex" })) then
+                  return ""
+                end
+                return ""
+              end,
+            '';
+        };
       in
       {
         options = {
@@ -61,18 +86,8 @@
           ];
           lualine_x = [
             "spaces"
-            {
-              __unkeyed-1.__raw =
-                # lua
-                ''
-                  function()
-                    if vim.b.copilot_suggestion_auto_trigger then
-                      return ""
-                    end
-                    return ""
-                  end,
-                '';
-            }
+            copilotStatus
+            ltexStatus
             "encoding"
             "filetype"
           ];
