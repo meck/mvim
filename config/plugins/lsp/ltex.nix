@@ -49,18 +49,15 @@ lib.mkIf (!config.mvim.small) {
       key = "<leader>lt";
       action.__raw = ''
         function() 
-          local server_name = "ltex_plus"
+          local server_name = "ltex"
           local bufnr = vim.api.nvim_get_current_buf()
-          local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
-          for _, client in ipairs(clients) do
-            if client.name == server_name then
+          if vim.tbl_isempty(vim.lsp.get_clients({ bufnr = bufnr, name = server_name })) then
+              vim.notify("Starting LTeX-ls", "info")
+              vim.api.nvim_command('LspStart ' .. server_name)
+          else
               vim.notify("Stopping LTeX-ls", "info")
-              vim.api.nvim_command('LspStop ' .. client.id)
-              return
-            end
+              vim.api.nvim_command('LspStop ' .. server_name)
           end
-          vim.notify("Starting LTeX-ls", "info")
-          vim.api.nvim_command('LspStart ' .. server_name)
         end
       '';
       options = {
