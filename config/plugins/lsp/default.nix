@@ -20,9 +20,6 @@ in
 
   plugins.rustaceanvim = {
     enable = true;
-    # Install rust-analyzer per project
-    rustAnalyzerPackage = null;
-
     # NOTE: 'server.settings' dosent work...
     # https://github.com/nix-community/nixvim/issues/1258
     settings = {
