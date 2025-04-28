@@ -111,7 +111,19 @@ _: {
       action.__raw = # lua
         ''
           function()
-            require('CopilotChat.integrations.telescope').pick(require("CopilotChat.actions").prompt_actions({}))
+            -- check if we are in a visual mode
+            local mode = vim.fn.visualmode()
+            if mode == "V" or mode == "v" or mode == "\22" then
+              -- visual mode
+              require('CopilotChat.integrations.telescope').pick(require("CopilotChat.actions").prompt_actions({
+                selection = require("CopilotChat.select").visual
+              }))
+            else
+              -- normal mode
+              require('CopilotChat.integrations.telescope').pick(require("CopilotChat.actions").prompt_actions({
+                selection = require("CopilotChat.select").buffer
+              }))
+            end
           end
         '';
 
