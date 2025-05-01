@@ -9,6 +9,8 @@ _: {
           start_with_preview = "ga";
         };
       };
+      basics = { };
+      bracketed = { };
       icons = { };
       pairs = { };
       surround = { };
@@ -22,7 +24,10 @@ _: {
   autoCmd = [
     {
       desc = "Disable indentscope by default";
-      event = [ "BufNew" "VimEnter" ];
+      event = [
+        "BufNew"
+        "VimEnter"
+      ];
       callback = {
         __raw =
           # lua
@@ -40,9 +45,9 @@ _: {
           # lua
           ''
             function()
-              if vim.v.option_type == "local" and vim.v.option_new == true then
-                vim.b.miniindentscope_disable = not vim.b.miniindentscope_disable
-              end
+                if vim.v.option_type == "local" then
+                    vim.b.miniindentscope_disable = not vim.v.option_new
+                end
             end
           '';
       };

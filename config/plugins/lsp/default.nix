@@ -84,9 +84,6 @@ in
     onAttach =
       # lua
       ''
-        -- Turn on signcolumn for the current window
-        vim.wo.signcolumn = "yes"
-
         -- Update code lenses
         if client.server_capabilities.codeLensProvider then
             local group_id = vim.api.nvim_create_augroup(("_lsp_codelens_%d"):format(bufnr), { clear = true })
@@ -147,28 +144,6 @@ in
   };
 
   keymaps = [
-    {
-      mode = "n";
-      key = "]d";
-      action.__raw = # lua
-        "function() vim.diagnostic.goto_next({float = true}) end";
-      options = {
-        silent = true;
-        desc = "Diagnostic: next";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "[d";
-      action.__raw = # lua
-        "function() vim.diagnostic.goto_prev({float = true}) end";
-      options = {
-        silent = true;
-        desc = "Diagnostic: prev";
-      };
-    }
-
     {
       mode = "n";
       key = "<leader>lf";

@@ -4,8 +4,6 @@
       # Misc
       timeoutlen = 500;
       ttimeoutlen = 50;
-      mouse = "a";
-      undofile = true;
       foldlevelstart = 99;
       updatetime = 200;
 
@@ -14,22 +12,15 @@
       secure = true;
 
       # Visual
-      showmode = false;
       visualbell = true;
+      cursorline = false;
       listchars = {
         space = "·";
         tab = "▸ ";
         eol = "¬";
       };
-      linebreak = true;
-      number = true;
-
-      # Searching
-      ignorecase = true;
-      smartcase = true;
 
       # Indentation defaults
-      smartindent = true;
       expandtab = true;
       softtabstop = 2;
       shiftwidth = 2;
@@ -116,21 +107,6 @@
       }
 
       {
-        desc = "Highlight on yank";
-        event = [ "TextYankPost" ];
-        callback = {
-          __raw = ''
-            function()
-              vim.highlight.on_yank({
-                higroup = "Search",
-                timeout = 350,
-              })
-            end
-          '';
-        };
-      }
-
-      {
         desc = "Remove kitty padding on enter";
         event = [ "VimEnter" ];
         command = ":silent ![ \"x$TERM\" = \"xxterm-kitty\" ] && kitty @ set-spacing padding=0 margin=0";
@@ -142,12 +118,7 @@
       }
     ];
 
-    extraConfigLuaPre =
-      ''
-        vim.opt.shortmess:append("c")
-      ''
-      + (builtins.readFile ./options.lua)
-      + (builtins.readFile ./neovide.lua);
+    extraConfigLuaPre = (builtins.readFile ./options.lua) + (builtins.readFile ./neovide.lua);
 
     extraFiles = {
       "keymap/swe-us_utf-8.vim".source = ../keymap/swe-us_utf-8.vim;

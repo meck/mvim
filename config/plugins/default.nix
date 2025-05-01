@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./blink-cmp.nix
@@ -22,6 +22,4 @@
     ./trouble.nix
     ./which-key.nix
   ];
-
-  extraPlugins = with pkgs.vimPlugins; [ vim-unimpaired ];
 }
