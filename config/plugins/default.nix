@@ -6,7 +6,6 @@
     ./dap.nix
     ./git
     ./illuminate.nix
-    ./indent-blankline.nix
     ./lsp
     ./lualine.nix
     ./markup.nix

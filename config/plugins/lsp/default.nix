@@ -20,8 +20,6 @@ in
 
   plugins.rustaceanvim = {
     enable = true;
-    # NOTE: 'server.settings' dosent work...
-    # https://github.com/nix-community/nixvim/issues/1258
     settings = {
       server.default_settings.rust-analyzer = {
         cargo = {
