@@ -12,6 +12,7 @@ _: {
       basics = { };
       bracketed = { };
       icons = { };
+      jump = {};
       pairs = { };
       surround = { };
       trailspace = { };
