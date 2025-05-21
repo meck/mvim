@@ -8,6 +8,7 @@ let
   inherit (config.mvim) small;
 in
 {
+  # Typst
   plugins.lsp.servers.tinymist = {
     enable = true;
     settings = {
@@ -16,22 +17,7 @@ in
     };
   };
 
-  # Typst
-  extraPlugins = lib.mkIf (!small) [ pkgs.vimPlugins.typst-preview-nvim ];
-  # https://github.com/chomosuke/typst-preview.nvim/issues/65
-  extraConfigLua =
-    lib.mkIf (!small) # lua
-      ''
-        require('typst-preview').setup {
-          get_root = function(path_of_main_file)
-            local root = os.getenv("TYPST_ROOT")
-            if root then 
-              return root 
-            end
-            return vim.fn.fnamemodify(path_of_main_file, ':p:h')
-          end,
-        }
-      '';
+  plugins.typst-preview.enable = !small ;
 
   plugins.typst-vim = {
     enable = true;
