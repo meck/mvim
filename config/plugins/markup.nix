@@ -17,7 +17,7 @@ in
     };
   };
 
-  plugins.typst-preview.enable = !small ;
+  plugins.typst-preview.enable = !small;
 
   plugins.typst-vim = {
     enable = true;
