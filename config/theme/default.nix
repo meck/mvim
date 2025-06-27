@@ -16,7 +16,6 @@ _: {
             LspInlayHint = {
               fg = "palette.fg3";
               bg = "palette.bg1";
-              style = "bold";
             };
           };
         };
@@ -25,7 +24,6 @@ _: {
           styles = {
             comments = "italic";
             keywords = "bold";
-            types = "bold";
           };
         };
       };
