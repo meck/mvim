@@ -1,13 +1,15 @@
 if vim.g.neovide then
     local g = vim.g
     local o = vim.opt
-    local scale_step = 1 + 0.10
+    local scale_step = 1 + 0.02
     g.neovide_padding_top = 10
     g.neovide_padding_bottom = 10
     g.neovide_padding_right = 10
     g.neovide_padding_left = 10
     g.neovide_scale_factor = 1.0
     g.neovide_fullscreen = false
+    g.neovide_floating_corner_radius = 0.3
+    o.linespace = 2
 
     local change_scale_factor = function(delta)
         g.neovide_scale_factor = g.neovide_scale_factor * delta
