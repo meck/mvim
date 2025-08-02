@@ -31,10 +31,6 @@ in
           extraArgs = [ "--no-deps" ];
         };
       };
-      tools = {
-        crate_test_executor = "toggleterm";
-        executor = "toggleterm";
-      };
     };
   };
 

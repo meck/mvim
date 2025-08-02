@@ -45,49 +45,46 @@ in
     }
   ];
 
-  keymaps =
-    [
-      {
-        mode = "n";
-        key = "<leader>mm";
-        action.__raw = "require('render-markdown').toggle";
-        options = {
-          silent = true;
-          desc = "Toggle render-markdown";
-        };
-      }
-      {
-        mode = "v";
-        key = "<leader>mt";
-        action = ":! tr -s ' ' | column -t -s '|' -o '|'<CR>";
-        options = {
-          silent = true;
-          desc = "Format selected table";
-        };
-      }
-    ]
-    ++ lib.optionals (!small) [
-
-      {
-        mode = "n";
-        key = "<leader>mp";
-        action.__raw = ''
-          function()
-            local filetype = vim.bo.filetype
-            if filetype == "markdown" then
-              vim.cmd("MarkdownPreviewToggle")
-            elseif filetype == "typst" then
-              vim.cmd("TypstPreviewToggle")
-            else
-              vim.notify("No preview for filetype: " .. filetype, "error")
-            end
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>mm";
+      action.__raw = "require('render-markdown').toggle";
+      options = {
+        silent = true;
+        desc = "Toggle render-markdown";
+      };
+    }
+    {
+      mode = "v";
+      key = "<leader>mt";
+      action = ":! tr -s ' ' | column -t -s '|' -o '|'<CR>";
+      options = {
+        silent = true;
+        desc = "Format selected table";
+      };
+    }
+  ]
+  ++ lib.optionals (!small) [
+    {
+      mode = "n";
+      key = "<leader>mp";
+      action.__raw = ''
+        function()
+          local filetype = vim.bo.filetype
+          if filetype == "markdown" then
+            vim.cmd("MarkdownPreviewToggle")
+          elseif filetype == "typst" then
+            vim.cmd("TypstPreviewToggle")
+          else
+            vim.notify("No preview for filetype: " .. filetype, "error")
           end
-        '';
-        options = {
-          silent = true;
-          desc = "Toggle browser preview";
-        };
-      }
-    ];
-
+        end
+      '';
+      options = {
+        silent = true;
+        desc = "Toggle browser preview";
+      };
+    }
+  ];
 }
