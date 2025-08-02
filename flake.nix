@@ -42,7 +42,10 @@
               "README.md"
               "*.vim"
             ];
-            programs.nixfmt.enable = true;
+            programs.nixfmt = {
+              enable = true;
+              package = pkgs.nixfmt-rfc-style;
+            };
             programs.stylua = {
               enable = true;
               settings = {
