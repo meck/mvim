@@ -21,7 +21,7 @@ _: {
     copilot-chat = {
       enable = true;
       settings = {
-        model = "claude-3.5-sonnet";
+        model = "claude-3.7-sonnet";
         question_header = "󱜸  Question ";
         answer_header = "  Copilot ";
         error_header = "  Error ";
