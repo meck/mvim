@@ -1,8 +1,10 @@
 {
   plugins.nvim-tree = {
     enable = true;
-    diagnostics.enable = true;
-    syncRootWithCwd = true;
+    settings = {
+      diagnostics.enable = true;
+      sync_root_with_cwd = true;
+    };
   };
 
   plugins.lualine.settings.extensions = [ "nvim-tree" ];
