@@ -21,10 +21,11 @@ _: {
     copilot-chat = {
       enable = true;
       settings = {
-        model = "claude-3.7-sonnet";
-        question_header = "󱜸  Question ";
-        answer_header = "  Copilot ";
-        error_header = "  Error ";
+        headers = {
+          user = "󱜸  You: ";
+          assistant = "  Copilot: ";
+          tool = "  Tool: ";
+        };
         window.layout = "horizontal";
         show_folds = false;
         show_help = false;
