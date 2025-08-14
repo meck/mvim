@@ -12,7 +12,6 @@
     ./mini.nix
     ./neogen.nix
     ./none-ls
-    ./notify.nix
     ./nvim-tree.nix
     ./oil.nix
     ./telescope.nix

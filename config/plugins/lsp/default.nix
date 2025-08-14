@@ -195,7 +195,5 @@ in
     }
   ];
 
-  plugins.fidget.enable = true;
-
   plugins.nvim-lightbulb.enable = true;
 }

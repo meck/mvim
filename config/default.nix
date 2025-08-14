@@ -32,10 +32,6 @@
 
             nvimSkipModules = [ "CopilotChat.integrations.fzflua" ];
           });
-          nvim-notify = prev.vimPlugins.nvim-notify.overrideAttrs (_: {
-            nvimSkipModules = [ "notify.integrations.fzf" ];
-          });
-
         };
       })
     ];

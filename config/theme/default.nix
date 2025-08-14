@@ -12,11 +12,16 @@ _: {
       flavor = "nordfox";
       settings = {
         groups = {
-          all = {
+          all = rec {
             LspInlayHint = {
               fg = "palette.fg3";
               bg = "palette.bg1";
             };
+            NormalFloat = {
+              fg = "palette.fg1";
+              bg = "palette.bg2";
+            };
+            FloatBorder = NormalFloat;
           };
         };
         options = {

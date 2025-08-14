@@ -13,6 +13,7 @@ _: {
       bracketed = { };
       icons = { };
       jump = { };
+      notify = { };
       pairs = { };
       surround = { };
       trailspace = { };
@@ -20,6 +21,7 @@ _: {
         symbol = "▎";
       };
     };
+    luaConfig.post = "vim.notify = MiniNotify.make_notify()";
   };
 
   autoCmd = [

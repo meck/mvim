@@ -9,10 +9,7 @@ _: {
         documentation.auto_show = true;
         trigger.show_in_snippet = false;
       };
-      appearance = {
-        nerd_font_variant = "normal";
-        use_nvim_cmp_as_default = true;
-      };
+      appearance.nerd_font_variant = "normal";
     };
   };
 
