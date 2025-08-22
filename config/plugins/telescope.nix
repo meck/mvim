@@ -1,27 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   plugins.telescope = {
     enable = true;
-
-    luaConfig.pre =
-      assert lib.assertMsg (
-        pkgs.vimPlugins.plenary-nvim.src.rev == "857c5ac632080dba10aae49dba902ce3abf91b35"
-      ) "Remove telescope workaround";
-      ''
-        --- workaround winborder on nvim 0.11
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "TelescopeFindPre",
-          callback = function()
-            vim.opt_local.winborder = "none"
-            vim.api.nvim_create_autocmd("WinLeave", {
-              once = true,
-              callback = function()
-                vim.opt_local.winborder = "rounded"
-              end,
-            })
-          end,
-        })
-      '';
 
     settings = {
       defaults = {
