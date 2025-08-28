@@ -64,10 +64,10 @@ lib.mkIf (!config.mvim.small) {
           local server_name = "ltex"
           local bufnr = vim.api.nvim_get_current_buf()
           if vim.tbl_isempty(vim.lsp.get_clients({ bufnr = bufnr, name = server_name })) then
-              vim.notify("Starting LTeX-ls", "info")
+              vim.notify("Starting LTeX-ls", vim.log.levels.INFO)
               vim.api.nvim_command('LspStart ' .. server_name)
           else
-              vim.notify("Stopping LTeX-ls", "info")
+              vim.notify("Stopping LTeX-ls", vim.log.levels.INFO)
               vim.api.nvim_command('LspStop ' .. server_name)
           end
         end

@@ -77,7 +77,7 @@ in
           elseif filetype == "typst" then
             vim.cmd("TypstPreviewToggle")
           else
-            vim.notify("No preview for filetype: " .. filetype, "error")
+            vim.notify("No preview for filetype: " .. filetype, vim.log.levels.ERROR)
           end
         end
       '';
