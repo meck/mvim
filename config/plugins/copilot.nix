@@ -67,35 +67,40 @@ _: {
     {
       mode = "n";
       key = "<leader>cc";
-      action = "<CMD>CopilotChatToggle<CR>";
+      action.__raw = # lua
+        "require('CopilotChat').toggle";
       options.desc = "CopilotChat: Toggle";
     }
 
     {
       mode = "n";
-      key = "<leader>cq";
+      key = "<leader>cm";
       action.__raw = # lua
-        ''
-          function()
-            vim.ui.input({ prompt = "Quick Chat (Buffer): " }, function(input)
-              if input ~= nil and input ~= "" then
-                require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-              end
-            end)
-          end 
-        '';
-      options.desc = "CopilotChat: Quick chat";
+        "require('CopilotChat').select_model";
+      options.desc = "CopilotChat: Select model";
     }
 
     {
-      mode = "v";
+      mode = [
+        "v"
+        "n"
+      ];
       key = "<leader>cq";
       action.__raw = # lua
         ''
           function()
-            vim.ui.input({ prompt = "Quick Chat (Selection): " }, function(input)
+            local mode = vim.api.nvim_get_mode().mode
+            local sel, label
+            if mode == "v" or mode == "V" or mode == "\22" then
+              sel = require("CopilotChat.select").visual
+              label = "Selection"
+            else
+              sel = require("CopilotChat.select").buffer
+              label = "Buffer"
+            end
+            vim.ui.input({ prompt = "Quick Chat (" .. label .."): " }, function(input)
               if input ~= nil and input ~= "" then
-                require("CopilotChat").ask(input, { selection = require("CopilotChat.select").visual })
+                require("CopilotChat").ask(input, { selection = sel })
               end
             end)
           end
@@ -112,23 +117,18 @@ _: {
       action.__raw = # lua
         ''
           function()
-            -- check if we are in a visual mode
-            local mode = vim.fn.visualmode()
-            if mode == "V" or mode == "v" or mode == "\22" then
-              -- visual mode
-              require('CopilotChat.integrations.telescope').pick(require("CopilotChat.actions").prompt_actions({
-                selection = require("CopilotChat.select").visual
-              }))
+            local mode = vim.api.nvim_get_mode().mode
+            local sel
+            if mode == "v" or mode == "V" or mode == "\22" then
+              sel = require("CopilotChat.select").visual
             else
-              -- normal mode
-              require('CopilotChat.integrations.telescope').pick(require("CopilotChat.actions").prompt_actions({
-                selection = require("CopilotChat.select").buffer
-              }))
+              sel = require("CopilotChat.select").buffer
             end
+            require("CopilotChat").select_prompt({ selection = sel })
           end
         '';
 
-      options.desc = "CopilotChat: Quick prompt actions";
+      options.desc = "CopilotChat: Prompt actions";
     }
   ];
 }
