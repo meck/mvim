@@ -1,6 +1,9 @@
 {
   plugins = {
-    trouble.enable = true;
+    trouble = {
+      enable = true;
+      settings.auto_preview = false;
+    };
     which-key.settings.spec = [
       {
         __unkeyed-1 = "<leader>x";

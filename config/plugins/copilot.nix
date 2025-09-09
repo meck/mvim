@@ -29,6 +29,13 @@ _: {
         window.layout = "horizontal";
         show_folds = false;
         show_help = false;
+        mappings = {
+          # default C-l
+          reset = {
+            insert = "<C-x>";
+            normal = "<C-x>";
+          };
+        };
       };
     };
     which-key.settings.spec = [

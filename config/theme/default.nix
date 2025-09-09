@@ -1,8 +1,10 @@
-_: {
+{ pkgs, ... }:
+{
   colorscheme = "nordfox";
   colorschemes = {
     melange.enable = true;
     catppuccin.enable = true;
+    gruvbox-material-nvim.enable = true;
     everforest = {
       enable = true;
       settings.background = "hard";
@@ -34,4 +36,9 @@ _: {
       };
     };
   };
+
+  extraPlugins = with pkgs.vimPlugins; [
+    zenbones-nvim
+    lush-nvim
+  ];
 }
