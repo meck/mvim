@@ -37,6 +37,15 @@ in
   };
   extraPackages = [ pkgs.python312Packages.pylatexenc ];
 
+  # image previews
+  plugins.image = {
+    enable = !small;
+    settings.backend = "kitty";
+    settings.integrations = {
+      markdown.clear_in_insert_mode = true;
+    };
+  };
+
   plugins.which-key.settings.spec = [
     {
       __unkeyed-1 = "<leader>m";
@@ -49,10 +58,19 @@ in
     {
       mode = "n";
       key = "<leader>mm";
-      action.__raw = "require('render-markdown').toggle";
+      action.__raw = ''
+        function()
+          require('render-markdown').toggle()
+          if require('render-markdown').get() then
+            require("image").enable()
+          else
+            require("image").disable()
+          end
+        end
+      '';
       options = {
         silent = true;
-        desc = "Toggle render-markdown";
+        desc = "Toggle render-markdown and image preview";
       };
     }
     {
