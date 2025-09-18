@@ -67,7 +67,11 @@
         mkNvimCheck =
           nvimPkg:
           nixvimLib.check.mkTestDerivationFromNvim {
-            nvim = nvimPkg;
+            nvim = nvimPkg.extend {
+              # Tries to get terminal size in tests
+              # TODO: https://github.com/nix-community/nixvim/blob/0c867f9e635ce70e829a562b20851cfc17a94196/lib/tests.nix#L18
+              plugins.image.enable = pkgs.lib.mkForce false;
+            };
             name = "Checks for ${nvimPkg.name}";
           };
       in
