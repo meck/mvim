@@ -1,7 +1,7 @@
 {
   plugins.illuminate = {
     enable = true;
-    providers = [
+    settings.providers = [
       "lsp"
       "tresitter"
     ];
