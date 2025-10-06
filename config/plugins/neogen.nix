@@ -1,6 +1,6 @@
 {
   plugins.neogen = {
     enable = true;
-    snippetEngine = "nvim";
+    settings.sinppet_engine = "nvim";
   };
 }
