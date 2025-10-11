@@ -25,7 +25,7 @@ lib.mkIf (!config.mvim.small) {
     enable = true;
     package = pkgs.ltex-ls-plus;
     activate = false;
-    settings = {
+    config = {
       cmd = [ "ltex-ls-plus" ];
       filetypes = [
         "asciidoc"
