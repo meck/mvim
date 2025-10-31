@@ -4,18 +4,6 @@
     profile.__raw = "'ivy'";
     luaConfig.pre = ''
       require('fzf-lua').register_ui_select()
-
-      vim.api.nvim_set_hl(0, "FzfLuaBufFlagAlt" , { link = "Directory" })
-      vim.api.nvim_set_hl(0, "FzfLuaBufFlagCur" , { link = "CursorLineNr"})
-      vim.api.nvim_set_hl(0, "FzfLuaBufNr" , { link = "LineNr" })
-      vim.api.nvim_set_hl(0, "FzfLuaHeaderBind" , { link = "Normal" })
-      vim.api.nvim_set_hl(0, "FzfLuaHeaderText" , { link = "Label" })
-      vim.api.nvim_set_hl(0, "FzfLuaLivePrompt" , { link = "Keyword" })
-      vim.api.nvim_set_hl(0, "FzfLuaLiveSym" , { link = "Label" })
-      vim.api.nvim_set_hl(0, "FzfLuaPathColNr" , { link = "Directory" })
-      vim.api.nvim_set_hl(0, "FzfLuaPathLineNr" , { link = "LineNr" })
-      vim.api.nvim_set_hl(0, "FzfLuaTabMarker" , { link = "Constant" })
-      vim.api.nvim_set_hl(0, "FzfLuaTabTitle" , { link = "Directory" })
     '';
 
     keymaps = {

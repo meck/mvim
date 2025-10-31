@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  colorscheme = "nordfox";
+  colorscheme = "nord";
   colorschemes = {
     melange.enable = true;
     catppuccin.enable = true;
@@ -9,36 +9,18 @@
       enable = true;
       settings.background = "hard";
     };
-    nightfox = {
-      enable = true;
-      flavor = "nordfox";
-      settings = {
-        groups = {
-          all = rec {
-            LspInlayHint = {
-              fg = "palette.fg3";
-              bg = "palette.bg1";
-            };
-            NormalFloat = {
-              fg = "palette.fg1";
-              bg = "palette.bg2";
-            };
-            FloatBorder = NormalFloat;
-          };
-        };
-        options = {
-          dim_inactive = false;
-          styles = {
-            comments = "italic";
-            keywords = "bold";
-          };
-        };
-      };
-    };
   };
 
+  extraConfigLuaPre = ''
+    require("nord").setup({
+      styles = {
+        lualine_bold = true,
+      },
+    })
+  '';
+
   extraPlugins = with pkgs.vimPlugins; [
+    gbprod-nord
     zenbones-nvim
-    lush-nvim
   ];
 }
