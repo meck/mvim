@@ -19,13 +19,18 @@
     '';
 
     keymaps = {
-      "<leader><leader>" = {
+      "<leader>\\" = {
         options.desc = "Fzf: builtin";
         action = "builtin";
         settings.winopts = {
           row = 0.0;
           col = 0.5;
         };
+      };
+
+      "<leader><leader>" = {
+        options.desc = "Fzf: resume";
+        action = "resume";
       };
 
       "<leader>/" = {
