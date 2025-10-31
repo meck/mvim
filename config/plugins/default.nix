@@ -4,6 +4,7 @@
     ./blink-cmp.nix
     ./copilot.nix
     ./dap.nix
+    ./fzf-lua.nix
     ./git
     ./illuminate.nix
     ./lsp
@@ -14,11 +15,11 @@
     ./none-ls
     ./nvim-tree.nix
     ./oil.nix
-    ./telescope.nix
     ./tmux-navigator.nix
     ./toggleterm.nix
     ./treesitter.nix
     ./trouble.nix
+    ./undotree.nix
     ./which-key.nix
   ];
 }
