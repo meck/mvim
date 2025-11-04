@@ -1,6 +1,7 @@
 {
   plugins.fzf-lua = {
     enable = true;
+    settings.winopts.backdrop = 80;
     profile.__raw = "'ivy'";
     luaConfig.pre = ''
       require('fzf-lua').register_ui_select()
@@ -44,6 +45,11 @@
       "<leader>gg" = {
         options.desc = "Git status";
         action = "git_status";
+      };
+
+      "<leader>lr" = {
+        options.desc = "LSP: references";
+        action = "lsp_references";
       };
 
       "<leader>lf" = {

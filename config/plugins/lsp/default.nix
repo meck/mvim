@@ -91,52 +91,46 @@ in
         end
       '';
 
-    keymaps =
-      let
-        action = {
+    keymaps = {
+      silent = true;
+      lspBuf = {
+
+        "<leader>la" = {
           action = "code_action";
           desc = "LSP: code action";
         };
-        rename = {
+
+        "<leader>lr" = {
           action = "rename";
           desc = "LSP: rename";
         };
-      in
-      {
-        silent = true;
-        lspBuf = {
-          "gd" = {
-            action = "definition";
-            desc = "LSP: definition";
-          };
 
-          "gi" = {
-            action = "implementation";
-            desc = "LSP: implementation";
-          };
+        "gd" = {
+          action = "definition";
+          desc = "LSP: definition";
+        };
 
-          "gD" = {
-            action = "declaration";
-            desc = "LSP: declaration";
-          };
+        "gi" = {
+          action = "implementation";
+          desc = "LSP: implementation";
+        };
 
-          "gy" = {
-            action = "type_definition";
-            desc = "LSP: type definition";
-          };
+        "gD" = {
+          action = "declaration";
+          desc = "LSP: declaration";
+        };
 
-          "gs" = {
-            action = "signature_help";
-            desc = "LSP: signature help";
-          };
+        "gy" = {
+          action = "type_definition";
+          desc = "LSP: type definition";
+        };
 
-          # Dual mapping to for old habits
-          "<leader>la" = action;
-          "<leader>a" = action;
-          "<leader>lr" = rename;
-          "<leader>r" = rename;
+        "gs" = {
+          action = "signature_help";
+          desc = "LSP: signature help";
         };
       };
+    };
   };
 
   keymaps = [
