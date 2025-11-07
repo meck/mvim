@@ -95,12 +95,12 @@ in
       silent = true;
       lspBuf = {
 
-        "<leader>la" = {
+        "<leader>a" = {
           action = "code_action";
           desc = "LSP: code action";
         };
 
-        "<leader>lr" = {
+        "<leader>r" = {
           action = "rename";
           desc = "LSP: rename";
         };
