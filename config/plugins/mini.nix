@@ -55,5 +55,17 @@ _: {
           '';
       };
     }
+
+    {
+      desc = "No trailspace in patches";
+      event = [ "Filetype" ];
+      pattern = [
+        "diff"
+        "gitsendemail"
+      ];
+      callback = {
+        __raw = "function() vim.b.minitrailspace_disable = true end";
+      };
+    }
   ];
 }

@@ -4,7 +4,14 @@
     settings.winopts.backdrop = 80;
     profile.__raw = "'ivy'";
     luaConfig.pre = ''
-      require('fzf-lua').register_ui_select()
+      require('fzf-lua').register_ui_select(
+        { winopts = {
+           width = 0.8,
+           height = 0.5,
+           row = 0.5,
+           col = 0.5 }
+        }
+      )
     '';
 
     keymaps = {
