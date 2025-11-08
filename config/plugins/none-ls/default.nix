@@ -23,19 +23,6 @@ lib.mkMerge [
           # about the temp file name and renames it.
           # https://github.com/nvimtools/none-ls.nvim/pull/34
           # protolint.enable = !small;
-          shfmt = {
-            enable = true;
-            settings =
-              # lua
-              ''{ extra_args = { "-i", "4", "-ci", "-bn", "-sr"  } }'';
-          };
-
-          stylua = {
-            enable = true;
-            settings =
-              # lua
-              ''{ extra_args = { "--indent-type", "Spaces", "--indent-width", "4" } }'';
-          };
         };
       };
     };

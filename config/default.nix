@@ -1,9 +1,10 @@
 { lib, ... }:
 {
   imports = [
+    ./filetype
+    ./mappings
     ./options
     ./plugins
-    ./mappings
     ./theme
   ];
 

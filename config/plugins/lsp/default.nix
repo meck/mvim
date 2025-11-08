@@ -63,6 +63,26 @@ in
       # Large size
       yamlls.enable = !small;
       taplo.enable = true;
+      lua_ls = {
+        enable = !small;
+        settings = {
+          format.defaultConfig = {
+            indent_style = "space";
+            indent_size = "4";
+          };
+          runtime = {
+            path = [
+              "lua/?.lua"
+              "lua/?/init.lua"
+            ];
+            version = "LuaJIT";
+          };
+          workspace = {
+            checkThirdParty = false;
+            library = [ "${pkgs.neovim-unwrapped}/share/nvim/runtime" ];
+          };
+        };
+      };
       nixd = {
         enable = true;
         settings = {
@@ -132,6 +152,12 @@ in
       };
     };
   };
+
+  extraPackages = lib.mkIf (!small) [
+    # For bashls
+    pkgs.shellcheck
+    pkgs.shfmt
+  ];
 
   keymaps = [
     {
