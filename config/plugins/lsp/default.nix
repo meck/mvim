@@ -8,93 +8,26 @@ let
   inherit (config.mvim) small;
 in
 {
-  imports = [ ./ltex.nix ];
-
-  plugins.clangd-extensions = {
-    enable = true;
-    settings.inlay_hints = {
-      other_hints_prefix = "» ";
-      parameter_hints_prefix = "» ";
-    };
-  };
-
-  plugins.rustaceanvim = {
-    enable = true;
-    settings = {
-      server.default_settings.rust-analyzer = {
-        cargo = {
-          allTargets = true;
-          features = "all";
-        };
-        check = {
-          command = "clippy";
-          extraArgs = [ "--no-deps" ];
-        };
-      };
-    };
-  };
+  imports = [
+    ./c.nix
+    ./haskell.nix
+    ./ltex.nix
+    ./nix.nix
+    ./rust.nix
+    ./lua.nix
+  ];
 
   plugins.lsp = {
     enable = true;
+
     inlayHints = true;
     servers = {
-      clangd = {
-        enable = true;
-        # Defaults includes .proto
-        filetypes = [
-          "c"
-          "cpp"
-          "objc"
-          "objcpp"
-          "cuda"
-        ];
-        package = lib.mkIf small null;
-      };
-      hls = {
-        enable = true;
-        # Install per project
-        package = null;
-        installGhc = false;
-      };
       bashls.enable = true;
       cmake.enable = true;
       pyright.enable = !small;
       ruff.enable = true;
-      # Large size
-      yamlls.enable = !small;
       taplo.enable = true;
-      lua_ls = {
-        enable = !small;
-        settings = {
-          format.defaultConfig = {
-            indent_style = "space";
-            indent_size = "4";
-          };
-          runtime = {
-            path = [
-              "lua/?.lua"
-              "lua/?/init.lua"
-            ];
-            version = "LuaJIT";
-          };
-          workspace = {
-            checkThirdParty = false;
-            library = [ "${pkgs.neovim-unwrapped}/share/nvim/runtime" ];
-          };
-        };
-      };
-      nixd = {
-        enable = true;
-        settings = {
-          diagnostic.suppress = [ "sema-escaping-with" ];
-          formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
-        };
-        # Dosent work with the `# lua` in nixvim
-        onAttach.function = # lua
-          ''
-            client.server_capabilities.semanticTokensProvider = nil
-          '';
-      };
+      yamlls.enable = !small;
     };
 
     onAttach =
@@ -193,16 +126,6 @@ in
       options = {
         silent = true;
         desc = "LSP: run codelens";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>ls";
-      action = "<cmd>ClangdSwitchSourceHeader<cr>";
-      options = {
-        silent = true;
-        desc = "Clangd: switch to/from header";
       };
     }
   ];
