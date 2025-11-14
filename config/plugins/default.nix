@@ -15,6 +15,7 @@
     ./none-ls
     ./nvim-tree.nix
     ./oil.nix
+    ./overseer.nix
     ./tmux-navigator.nix
     ./toggleterm.nix
     ./treesitter.nix

@@ -88,6 +88,7 @@
             "spaces"
             copilotStatus
             ltexStatus
+            "overseer"
             "encoding"
             "filetype"
           ];
