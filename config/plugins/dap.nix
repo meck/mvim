@@ -147,4 +147,15 @@ lib.mkIf (!config.mvim.small) {
     ++ lib.optionals (!pkgs.stdenv.isDarwin) [
       vscode-extensions.vadimcn.vscode-lldb.adapter
     ];
+
+  extraPlugins = with pkgs.vimPlugins; [ nvim-dap-cortex-debug ];
+
+  extraConfigLua = # lua
+    ''
+      require('dap-cortex-debug').setup {
+          extension_path = "${pkgs.vscode-extensions.marus25.cortex-debug}/share/vscode/extensions/marus25.cortex-debug",
+          node_path = "${lib.getExe pkgs.nodejs}",
+      }
+    '';
+
 }
