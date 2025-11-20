@@ -24,10 +24,15 @@ in
     servers = {
       bashls.enable = true;
       cmake.enable = true;
+      jsonls.enable = !small;
       pyright.enable = !small;
       ruff.enable = true;
       taplo.enable = true;
       yamlls.enable = !small;
+      dts_lsp = {
+        enable = !small;
+        package = pkgs.dts-lsp;
+      };
     };
 
     onAttach =
