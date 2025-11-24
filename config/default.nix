@@ -24,6 +24,20 @@
                 sha256 = "sha256-EaDeY8aP41xHTw5epqYjaBqPYs6Z2DABzSaVOnG6D6I=";
               };
           });
+
+          nvim-dap-cortex-debug = prev.vimPlugins.nvim-dap-cortex-debug.overrideAttrs (_: {
+            src =
+              assert lib.assertMsg (
+                prev.vimPlugins.nvim-dap-cortex-debug.version == "2025-02-13"
+              ) "Check nvim-dap-cortex-debug";
+              final.fetchFromGitHub {
+                owner = "meck";
+                repo = "nvim-dap-cortex-debug";
+                rev = "de37a98fc5643e8b3daade24e1b1409442640882";
+                sha256 = "sha256-dGWm6eVo2d9TAnV17p+xtqE7I8BZr/Znv104GdEbuI4=";
+              };
+          });
+
         };
       })
     ];
