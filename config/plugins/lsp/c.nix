@@ -25,6 +25,13 @@
           "cuda"
         ];
         package = lib.mkIf config.mvim.small null;
+        cmd = [
+          "clangd"
+          "--background-index"
+          "--clang-tidy"
+          "--fallback-style=llvm"
+          "--query-driver=/**/*"
+        ];
       };
     };
   };
