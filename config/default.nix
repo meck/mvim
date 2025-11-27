@@ -33,8 +33,8 @@
               final.fetchFromGitHub {
                 owner = "meck";
                 repo = "nvim-dap-cortex-debug";
-                rev = "de37a98fc5643e8b3daade24e1b1409442640882";
-                sha256 = "sha256-dGWm6eVo2d9TAnV17p+xtqE7I8BZr/Znv104GdEbuI4=";
+                rev = "327f1617d10d4ba6cd3e1939bcf1ddae54491734";
+                sha256 = "sha256-D85dGA0yqbrL/KFc8Z3SKuPx0hhx7jJWUK+oqKVefVY=";
               };
           });
 

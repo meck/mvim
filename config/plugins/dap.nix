@@ -37,6 +37,7 @@ lib.mkIf (!config.mvim.small) {
   };
 
   plugins.dap-ui.enable = true;
+  plugins.dap-virtual-text.enable = true;
 
   plugins.which-key.settings.spec = [
     {
