@@ -2,19 +2,17 @@
 {
   plugins.overseer = {
     enable = true;
-    settings.task_list.bindings = {
-      "<C-h>" = false; # "DecreaseDetail";
+    settings.task_list.keymaps = {
       "<C-j>" = false; # "ScrollOutputDown";
       "<C-k>" = false; # "ScrollOutputUp";
-      "<C-l>" = false; # "IncreaseDetail";
     };
   };
 
   keymaps = [
     {
       mode = "n";
-      key = "<leader>vt";
-      action = "<cmd>:OverseerToggle<cr>";
+      key = "<leader>ot";
+      action = "<cmd>:OverseerToggle!<cr>";
       options = {
         desc = "Overseer Toggle";
         silent = true;
@@ -22,7 +20,7 @@
     }
     {
       mode = "n";
-      key = "<leader>vv";
+      key = "<leader>oo";
       action = "<cmd>:OverseerRun<cr>";
       options = {
         desc = "Overseer Run";
@@ -33,7 +31,7 @@
 
   plugins.which-key.settings.spec = [
     {
-      __unkeyed-1 = "<leader>v";
+      __unkeyed-1 = "<leader>o";
       icon = "󰑮 ";
       group = "Overseer";
     }
