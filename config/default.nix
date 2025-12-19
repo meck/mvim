@@ -28,7 +28,7 @@
           nvim-dap-cortex-debug = prev.vimPlugins.nvim-dap-cortex-debug.overrideAttrs (_: {
             src =
               assert lib.assertMsg (
-                prev.vimPlugins.nvim-dap-cortex-debug.version == "2025-02-13"
+                prev.vimPlugins.nvim-dap-cortex-debug.version == "0-unstable-2025-02-13"
               ) "Check nvim-dap-cortex-debug";
               final.fetchFromGitHub {
                 owner = "meck";
