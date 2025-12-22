@@ -1,7 +1,7 @@
 {
   plugins.treesitter = {
     enable = true;
-    folding = true;
+    folding.enable = true;
     settings = {
       indent.enable = true;
       incrementalSelection.enable = false;
