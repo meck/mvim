@@ -14,6 +14,8 @@ in
     settings = {
       exportPdf = "never";
       formatterMode = "typstyle";
+      formatterProseWrap = true;
+      formatterPrintWidth = 100;
     };
   };
 
