@@ -166,7 +166,7 @@ _: {
       key = "<leader>gb";
       action.__raw =
         # lua
-        ''function() package.loaded.gitsigns.blame_line({ full = true }) end'';
+        "function() package.loaded.gitsigns.blame_line({ full = true }) end";
       options = {
         silent = true;
         desc = "Git: blame line";
