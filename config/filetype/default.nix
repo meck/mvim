@@ -33,5 +33,21 @@
             end
         '';
     }
+
+    {
+      event = [ "FileType" ];
+      pattern = [ "dts" ];
+      desc = "Use tabs for dts";
+      callback.__raw = # lua
+        ''
+          function()
+              vim.bo.shiftwidth = 8
+              vim.bo.tabstop = 8
+              vim.bo.softtabstop = 8
+              vim.bo.expandtab = false
+            end
+        '';
+    }
+
   ];
 }
