@@ -6,6 +6,7 @@
     ./dap.nix
     ./fzf-lua.nix
     ./git
+    ./guess-indent.nix
     ./illuminate.nix
     ./lsp
     ./lualine.nix
