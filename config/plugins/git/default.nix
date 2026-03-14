@@ -6,7 +6,7 @@ _: {
         graph_style.__raw =
           # lua
           ''
-            vim.env.TERM == "xterm-kitty" and "kitty" or "unicode"
+            (vim.env.TERM == "xterm-kitty" or vim.env.TERM == "xterm-ghostty") and "kitty" or "unicode"
           '';
         auto_refresh = true;
         integrations.diffview = true;
