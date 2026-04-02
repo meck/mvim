@@ -11,7 +11,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>ot";
+      key = "<leader>o";
       action = "<cmd>:OverseerToggle!<cr>";
       options = {
         desc = "Overseer Toggle";
@@ -20,7 +20,7 @@
     }
     {
       mode = "n";
-      key = "<leader>oo";
+      key = "<C-b>";
       action = "<cmd>:OverseerRun<cr>";
       options = {
         desc = "Overseer Run";

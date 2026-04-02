@@ -130,7 +130,6 @@ lib.mkIf (!config.mvim.small) {
       action.__raw = # lua
         ''
           function()
-            require('dap.ext.vscode').load_launchjs(nil, {})
             require("dapui").toggle()
           end
         '';

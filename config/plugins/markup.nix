@@ -29,7 +29,10 @@ in
 
   # Markdown
   plugins.lsp.servers.marksman.enable = true;
-  plugins.render-markdown.enable = true;
+  plugins.render-markdown = {
+    enable = true;
+    settings.enabled = false;
+  };
   plugins.markdown-preview = {
     enable = !small;
     settings = {

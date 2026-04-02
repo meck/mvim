@@ -13,7 +13,10 @@ _: {
       bracketed = { };
       icons = { };
       jump = { };
-      notify = { };
+      notify = {
+        # Its to flickery use fidget nvim for this
+        lsp_progress.enable = false;
+      };
       pairs = { };
       surround = { };
       trailspace = { };

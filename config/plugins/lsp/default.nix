@@ -143,5 +143,25 @@ in
     }
   ];
 
-  plugins.nvim-lightbulb.enable = true;
+  plugins.fidget = {
+    enable = true;
+    settings = {
+      progress = {
+        # Mainly for chatty ltex-ls
+        suppress_on_insert = true;
+      };
+    };
+  };
+
+  plugins.nvim-lightbulb = {
+    enable = true;
+    settings = {
+      autocmd.enabled = true;
+      sign = {
+        text = "󰌵";
+        lens_text = "󰍉";
+        hl = "DiagnosticSignWarn";
+      };
+    };
+  };
 }
