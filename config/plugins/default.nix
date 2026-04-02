@@ -21,7 +21,20 @@
     ./toggleterm.nix
     ./treesitter.nix
     ./trouble.nix
-    ./undotree.nix
     ./which-key.nix
+  ];
+
+  # Builtin plugins
+  extraConfigLua = ''
+    vim.cmd.packadd("nvim.undotree")
+  '';
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>u";
+      action = "<cmd>:Undotree<cr>";
+      options.silent = true;
+    }
   ];
 }
