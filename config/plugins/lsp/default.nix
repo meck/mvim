@@ -35,20 +35,6 @@ in
       };
     };
 
-    onAttach =
-      # lua
-      ''
-        -- Update code lenses
-        if client.server_capabilities.codeLensProvider then
-            local group_id = vim.api.nvim_create_augroup(("_lsp_codelens_%d"):format(bufnr), { clear = true })
-            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "InsertLeave" }, {
-                buffer = bufnr,
-                callback = function() vim.lsp.codelens.refresh({ bufnr = bufnr }) end,
-                group = group_id,
-            })
-        end
-      '';
-
     keymaps = {
       silent = true;
       lspBuf = {
