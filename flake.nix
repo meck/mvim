@@ -57,7 +57,7 @@
         nvim =
           assert (
             pkgs.lib.assertMsg (
-              nixvim.inputs.nixpkgs.rev == "ae67888ff7ef9dff69b3cf0cc0fbfbcd3a722abe"
+              nixvim.inputs.nixpkgs.rev == "b63fe7f000adcfa269967eeff72c64cafecbbebe"
             ) "Revert flake input to use nixvim/nixpkgs for nixpkgs"
           );
           nixvim.legacyPackages.${system}.makeNixvimWithModule {
