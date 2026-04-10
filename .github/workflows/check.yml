@@ -11,9 +11,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: "Nix flake check (${{ matrix.os }})"
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@v17
-      - uses: cachix/cachix-action@v16
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@v22
+      - uses: cachix/cachix-action@v17
         with:
           name: meck
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
