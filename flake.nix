@@ -2,8 +2,7 @@
   description = "meck's personal nvim config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.follows = "nixvim/nixpkgs";
+    nixpkgs.follows = "nixvim/nixpkgs";
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
     treefmt-nix = {
@@ -54,17 +53,11 @@
             programs.yamlfmt.enable = true;
           }).config.build;
 
-        nvim =
-          assert (
-            pkgs.lib.assertMsg (
-              nixvim.inputs.nixpkgs.rev == "b63fe7f000adcfa269967eeff72c64cafecbbebe"
-            ) "Revert flake input to use nixvim/nixpkgs for nixpkgs"
-          );
-          nixvim.legacyPackages.${system}.makeNixvimWithModule {
-            inherit pkgs;
-            module = import ./config;
-            extraSpecialArgs = { };
-          };
+        nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          inherit pkgs;
+          module = import ./config;
+          extraSpecialArgs = { };
+        };
 
         nvim-small = nvim.extend { mvim.small = true; };
 
