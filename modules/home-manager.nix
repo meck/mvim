@@ -10,7 +10,10 @@
       config = {
         enable = true;
         viAlias = true;
-        nixpkgs.source = inputs.nixpkgs;
+        nixpkgs = {
+          source = inputs.nixpkgs;
+          config.allowUnfree = true;
+        };
       };
     };
 }
