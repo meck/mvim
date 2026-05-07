@@ -49,6 +49,10 @@
     sidekick = {
       enable = true;
       settings = {
+        nes = {
+          enabled = false;
+          diff.show = "cursor";
+        };
         cli = {
           # remove --banner
           tools.copilot.cmd = [ "copilot" ];
@@ -121,8 +125,17 @@
       mode = "n";
       key = "<leader>ce";
       action.__raw = # lua
-        "require('copilot.suggestion').toggle_auto_trigger";
-      options.desc = "Copilot: Toggle auto trigger";
+        ''
+          function()
+            require('copilot.suggestion').toggle_auto_trigger()
+            if vim.b.copilot_suggestion_auto_trigger then
+              require('sidekick.nes').enable()
+            else
+              require('sidekick.nes').disable()
+            end
+          end
+        '';
+      options.desc = "Copilot: Toggle auto trigger and NES";
     }
 
     {
