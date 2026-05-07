@@ -11,7 +11,7 @@
     {
       # Terminal exit
       mode = "t";
-      key = "<esc>";
+      key = "<esc><esc>";
       action = "<C-\\><C-n>";
       options.silent = true;
     }

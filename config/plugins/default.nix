@@ -1,8 +1,8 @@
 { ... }:
 {
   imports = [
+    ./ai.nix
     ./blink-cmp.nix
-    ./copilot.nix
     ./dap.nix
     ./fzf-lua.nix
     ./git
