@@ -52,6 +52,10 @@
         cli = {
           # remove --banner
           tools.copilot.cmd = [ "copilot" ];
+          mux = {
+            enabled = true;
+            backend = "tmux";
+          };
         };
       };
     };
