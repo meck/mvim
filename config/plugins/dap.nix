@@ -6,8 +6,6 @@
 }:
 lib.mkIf (!config.mvim.small) {
 
-  plugins.lualine.settings.extensions = [ "nvim-dap-ui" ];
-
   plugins.dap = {
     enable = true;
     signs = {
@@ -36,8 +34,43 @@ lib.mkIf (!config.mvim.small) {
     };
   };
 
-  plugins.dap-ui.enable = true;
-  plugins.dap-virtual-text.enable = true;
+  plugins.dap-view = {
+    enable = true;
+    settings = {
+      winbar = {
+        sections = [
+          "scopes"
+          "watches"
+          "breakpoints"
+          "threads"
+          "exceptions"
+          "repl"
+          # "console"
+        ];
+        controls.enabled = true;
+      };
+      virtual_text.enabled = true;
+      auto_toggle = true;
+    };
+  };
+
+  plugins.lualine.settings.extensions = [
+    {
+      filetypes = [
+        "dap-view"
+        "dap-repl"
+      ];
+      sections.lualine_a = [
+        {
+          __unkeyed-1.__raw = ''
+            function()
+              return "  Debug"
+            end
+          '';
+        }
+      ];
+    }
+  ];
 
   plugins.which-key.settings.spec = [
     {
@@ -128,16 +161,27 @@ lib.mkIf (!config.mvim.small) {
       mode = "n";
       key = "<leader>dd";
       action.__raw = # lua
-        ''
-          function()
-            require("dapui").toggle()
-          end
-        '';
+        "function() require('dap-view').toggle() end";
       options = {
         silent = true;
-        desc = "Toggle ui";
+        desc = "Toggle dap-view";
       };
     }
+
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>dw";
+      action.__raw = # lua
+        "function() require('dap-view').add_expr() end";
+      options = {
+        silent = true;
+        desc = "Add to Watches";
+      };
+    }
+
   ];
 
   extraPackages =
