@@ -24,7 +24,13 @@ _: {
         symbol = "▎";
       };
     };
-    luaConfig.post = "vim.notify = MiniNotify.make_notify()";
+    luaConfig.post = # lua
+      ''
+        vim.notify = MiniNotify.make_notify()
+        vim.api.nvim_create_user_command('NotifyHistory', function()
+          MiniNotify.show_history()
+        end, { desc = 'Show notify history' })
+      '';
   };
 
   autoCmd = [
@@ -71,4 +77,5 @@ _: {
       };
     }
   ];
+
 }
