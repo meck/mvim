@@ -199,6 +199,7 @@ lib.mkIf (!config.mvim.small) {
       require('dap-cortex-debug').setup {
           extension_path = "${pkgs.vscode-extensions.marus25.cortex-debug}/share/vscode/extensions/marus25.cortex-debug",
           node_path = "${lib.getExe pkgs.nodejs}",
+          dapui_rtt = false,
       }
     '';
 
