@@ -12,18 +12,6 @@
     nixpkgs.overlays = [
       (final: prev: {
         vimPlugins = prev.vimPlugins // {
-          codediff-nvim = prev.vimPlugins.codediff-nvim.overrideAttrs (_: {
-            version = "2.45.0";
-            src =
-              assert lib.assertMsg (prev.vimPlugins.codediff-nvim.version == "2.43.15") "Check codediff-nvim";
-              final.fetchFromGitHub {
-                owner = "esmuellert";
-                repo = "codediff.nvim";
-                tag = "v2.45.0";
-                hash = "sha256-Up4vH5yk13don0HrmHHpqrPIKtc1MTtDbZ6QcMHQYAU=";
-              };
-          });
-
           nvim-dap-cortex-debug = prev.vimPlugins.nvim-dap-cortex-debug.overrideAttrs (_: {
             src =
               assert lib.assertMsg (
