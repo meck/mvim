@@ -16,6 +16,13 @@
       styles = {
         lualine_bold = true,
       },
+      -- Colors mixed to background colors
+      on_highlights = function(highlights, colors)
+        highlights.DiffAdd = { bg = "#424b4d" }
+        highlights.DiffDelete = { bg = "#433a46" }
+        highlights.DiffChange = { bg = "#494a4b" }
+        highlights.DiffText = { bg = "#5e5a52" }
+      end,
     })
   '';
 

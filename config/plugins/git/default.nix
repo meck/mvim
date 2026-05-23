@@ -9,10 +9,12 @@ _: {
             (vim.env.TERM == "xterm-kitty" or vim.env.TERM == "xterm-ghostty") and "kitty" or "unicode"
           '';
         auto_refresh = true;
-        integrations.diffview = true;
       };
     };
-    diffview.enable = true;
+    codediff = {
+      enable = true;
+      settings.highlights.char_brightness = 1.1;
+    };
     gitsigns.enable = true;
     which-key.settings.spec = [
       {
