@@ -6,21 +6,13 @@ local api = vim.api
 -- Delete all but the current buffer
 vim.cmd([[ command! Bonly silent! execute "%bd|e#|bd#" ]])
 
-local function change_ltex_lang(new_lang)
-    if vim.fn.exists(":LTeXSwitchLang") > 0 then
-        vim.cmd.LTeXSwitchLang(new_lang)
-    end
-end
-
 function _G.swe_mode_toggle()
     if vim.opt.keymap:get() ~= "" then
         o.keymap = ""
         o.spelllang = "en_us"
-        change_ltex_lang("en-US")
     else
         o.keymap = "swe-us"
         o.spelllang = "sv"
-        change_ltex_lang("sv")
     end
 end
 

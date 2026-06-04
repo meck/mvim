@@ -30,13 +30,13 @@
               end,
             '';
         };
-        ltexStatus = {
+        harperStatus = {
           __unkeyed-1.__raw =
             # lua
             ''
               function()
                 local bufnr = vim.api.nvim_get_current_buf()
-                if vim.tbl_isempty(vim.lsp.get_clients({bufnr = bufnr, name = "ltex" })) then
+                if vim.tbl_isempty(vim.lsp.get_clients({bufnr = bufnr, name = "harper_ls" })) then
                   return ""
                 end
                 return ""
@@ -87,7 +87,7 @@
           lualine_x = [
             "spaces"
             copilotStatus
-            ltexStatus
+            harperStatus
             "overseer"
             "encoding"
             "filetype"

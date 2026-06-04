@@ -10,11 +10,11 @@ in
 {
   imports = [
     ./c.nix
+    ./harper.nix
     ./haskell.nix
-    ./ltex.nix
+    ./lua.nix
     ./nix.nix
     ./rust.nix
-    ./lua.nix
   ];
 
   plugins.lsp = {
@@ -133,7 +133,7 @@ in
     enable = true;
     settings = {
       progress = {
-        # Mainly for chatty ltex-ls
+        # Dont be chatty
         suppress_on_insert = true;
       };
     };
