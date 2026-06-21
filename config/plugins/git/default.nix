@@ -32,7 +32,7 @@ _: {
         # lua
         ''
           function()
-            require('neogit').open({ kind = 'replace'});
+            require('neogit').open({ kind = 'tab'});
           end
         '';
       options = {
