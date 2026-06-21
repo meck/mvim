@@ -46,7 +46,7 @@
       in
       {
         options = {
-          alwaysDivideMiddle = true;
+          always_show_tabline = false;
           extensions = [ "quickfix" ];
           component_separators = {
             left = "";
@@ -101,6 +101,17 @@
         inactive_sections = {
           lualine_b = [ "branch" ];
           lualine_c = [ filenameSec ];
+        };
+        tabline = {
+          lualine_a = [
+            {
+              __unkeyed-1 = "tabs";
+              mode = 2;
+              path = 0;
+              show_modified_status = false;
+              use_mode_colors = true;
+            }
+          ];
         };
       };
   };

@@ -34,8 +34,8 @@
     # Tab Navigation
     {
       mode = "n";
-      key = "tn";
-      action = ":tabnew<cr>";
+      key = "<Leader>tn";
+      action = "<cmd>tabnew<cr>";
       options = {
         silent = true;
         desc = "New Tab";
@@ -44,8 +44,8 @@
 
     {
       mode = "n";
-      key = "td";
-      action = ":tabclose<cr>";
+      key = "<Leader>td";
+      action = "<cmd>tabclose<cr>";
       options = {
         silent = true;
         desc = "Close Tab";
@@ -54,8 +54,8 @@
 
     {
       mode = "n";
-      key = "th";
-      action = ":tabprev<cr>";
+      key = "<Leader>th";
+      action = "<cmd>tabprev<cr>";
       options = {
         silent = true;
         desc = "Previous Tab";
@@ -64,8 +64,8 @@
 
     {
       mode = "n";
-      key = "tl";
-      action = ":tabnext<cr>";
+      key = "<Leader>tl";
+      action = "<cmd>tabnext<cr>";
       options = {
         silent = true;
         desc = "Next Tab";
@@ -74,8 +74,8 @@
 
     {
       mode = "n";
-      key = "tk";
-      action = ":+tabmove<cr>";
+      key = "<Leader>tk";
+      action = "<cmd>+tabmove<cr>";
       options = {
         silent = true;
         desc = "Move Tab Left";
@@ -84,8 +84,18 @@
 
     {
       mode = "n";
-      key = "tj";
-      action = ":-tabmove<cr>";
+      key = "<Leader>tj";
+      action = "<cmd>-tabmove<cr>";
+      options = {
+        silent = true;
+        desc = "Move Tab Right";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<Leader>to";
+      action = "<cmd>tabonly<cr>";
       options = {
         silent = true;
         desc = "Move Tab Right";
