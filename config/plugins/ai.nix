@@ -25,27 +25,6 @@
       };
     };
 
-    copilot-chat = {
-      enable = true;
-      settings = {
-        headers = {
-          user = "󱜸  You: ";
-          assistant = "  Copilot: ";
-          tool = "  Tool: ";
-        };
-        window.layout = "horizontal";
-        show_folds = false;
-        show_help = false;
-        mappings = {
-          # default C-l
-          reset = {
-            insert = "<C-x>";
-            normal = "<C-x>";
-          };
-        };
-      };
-    };
-
     sidekick = {
       enable = true;
       settings = {
@@ -96,21 +75,6 @@
     ];
   };
 
-  autoCmd = [
-    {
-      event = [ "BufEnter" ];
-      pattern = [ "copilot-*" ];
-      callback = {
-        __raw = ''
-          function()
-            vim.opt_local.number = false
-            vim.opt_local.signcolumn = "no"
-          end
-        '';
-      };
-    }
-  ];
-
   extraPackages = lib.mkIf (!config.mvim.small) (
     with pkgs;
     [
@@ -136,22 +100,6 @@
           end
         '';
       options.desc = "Copilot: Toggle auto trigger and NES";
-    }
-
-    {
-      mode = "n";
-      key = "<leader>cv";
-      action.__raw = # lua
-        "require('CopilotChat').toggle";
-      options.desc = "CopilotChat: Toggle";
-    }
-
-    {
-      mode = "n";
-      key = "<leader>cm";
-      action.__raw = # lua
-        "require('CopilotChat').select_model";
-      options.desc = "CopilotChat: Select model";
     }
 
     {
