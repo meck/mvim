@@ -37,7 +37,7 @@
           tools.copilot.cmd = [ "copilot" ];
           mux = {
             enabled = true;
-            backend = "tmux";
+            backend = "zellij";
           };
         };
       };
