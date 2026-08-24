@@ -188,7 +188,7 @@ lib.mkIf (!config.mvim.small) {
     with pkgs;
     [ lldb ]
     # not building under darwin
-    ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+    ++ lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [
       vscode-extensions.vadimcn.vscode-lldb.adapter
     ];
 
