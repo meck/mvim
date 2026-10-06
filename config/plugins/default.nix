@@ -17,7 +17,7 @@
     ./nvim-tree.nix
     ./oil.nix
     ./overseer.nix
-    ./tmux-navigator.nix
+    ./smart-splits.nix
     ./toggleterm.nix
     ./treesitter.nix
     ./trouble.nix
